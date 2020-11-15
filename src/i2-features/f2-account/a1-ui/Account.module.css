@@ -1,0 +1,47 @@
+.account {
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+    height: 75vh;
+}
+
+.menu {
+    width: calc(287px - 90px);
+    height: calc(600px - 90px);
+    margin-right: 3px;
+    clip-path: polygon(
+            0% 57px,     /* верхняя левая */
+            66px 0%,     /* верхняя левая */
+            /*95% 0%,    !* верхняя правая *!*/
+            100% 0%,   /* верхняя правая */
+            /*100% 95%,  !* нижняя правая *!*/
+            100% 100%,  /* нижняя правая */
+            66px 100%,   /* нижняя левая */
+            0 calc(100% - 57px)
+    );
+    border-radius: 5px;
+
+    padding: 45px;
+
+    font-size: 18px;
+    background: #1b1b21;
+    /*color: #f3f3f3;*/
+    color: #5a7d26;
+}
+
+.menu .item {
+    margin-bottom: 35px;
+    border-bottom: 1px solid #0094ff;
+}
+
+.checked {
+    /*color: #5a7d26;*/
+    color: #f3f3f3;
+}
+
+.checkedBlock {
+    width: 337px;
+    height: 581px;
+
+    background: linear-gradient(to top left, #01518a, #0094ff);
+}

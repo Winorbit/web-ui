@@ -1,0 +1,101 @@
+.mail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+}
+
+.logo {
+    height: 260px;
+    width: 260px;
+    margin-right: -155px;
+    z-index: 2;
+
+    border: #ffffff solid 30px;
+    border-radius: 300px;
+    background: #0093fe;
+}
+
+.default {
+    background: #0093fe;
+}
+
+.loading {
+    background: #fedc00;
+}
+
+.error {
+    background: #fe001e;
+}
+
+.ok {
+    background: #00fe04;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    justify-content: flex-start;
+    width: 828px;
+    height: calc(465px - 45px);
+    z-index: 1;
+
+    padding-top: 45px;
+    padding-left: 200px;
+
+    background: #0093fe;
+}
+
+.form .item {
+    margin-top: 20px;
+}
+
+.img {
+    margin-top: 70px;
+    margin-left: 55px;
+}
+
+.input {
+    width: 422px;
+    height: 40px;
+    padding-left: 20px;
+
+    border: none;
+    outline: none;
+}
+
+.textarea {
+    width: 688px;
+    height: 210px;
+
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+.button {
+    width: 288px;
+    height: 44px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-left: 200px;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    color: #505050;
+    font-size: 24px;
+    font-weight: bold;
+    background: white;
+}
+
+.button:hover {
+    border: 2px solid white;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.6);
+    background: #f3f3f3;
+}
+
+.button:active {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    background: white;
+}
