@@ -1,6 +1,12 @@
-FROM node:15-alpine as builder
+FROM node:10-alpine as builder
 WORKDIR /app
-COPY package.json /app/package.json
-RUN npm install
 COPY . /app
-RUN npm run build
+RUN yarn install && yarn build
+
+FROM nginx:alpine
+COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+COPY --from=builder /app/build .
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
