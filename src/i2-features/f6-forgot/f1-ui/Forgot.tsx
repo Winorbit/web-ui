@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState} from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useParams} from 'react-router-dom'
 import s from './Forgot.module.css'
 import {PATH} from '../../../i1-main/m1-ui/u2-main/Main'
 import logoDef from './login-def.png'
@@ -18,24 +18,32 @@ type LoginPropsType = {
 const Forgot: React.FC<LoginPropsType> = (
     // {status, error, setStatus, send}
 ) => {
-    const [login, setLogin] = useState<string>('me@gmail.com')
-    const [pass, setPass] = useState<string>('y3jPqdFvNtB6Q96')
+    const {token} = useParams()
+    const [login, setLogin] = useState<string>(!token ? 'me@gmail.com' : 'new pass')
+    const [pass, setPass] = useState<string>('new pass')
     const [show, setShow] = useState<boolean>(false)
     const [status, setStatus] = useState<string>('')
 
     const onChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
         setLogin(e.currentTarget.value)
-        setStatus('')
+        if (pass && e.currentTarget.value === pass) setStatus('ok')
+        else setStatus('')
     }
     const onChangePass = (e: ChangeEvent<HTMLInputElement>) => {
         setPass(e.currentTarget.value)
-        setStatus('')
+        if (e.currentTarget.value && login === e.currentTarget.value) setStatus('ok')
+        else setStatus('')
     }
 
     const sendCallback = () => {
         // send(login, pass)
-        if (login === 'me@gmail.com') setStatus('на вашу почту выслана ссылка для смены пароля!')
+        if (login === 'me@gmail.com' && !token) setStatus('на вашу почту выслана ссылка для смены пароля!')
+        else if (pass === login && token) setStatus('ok')
         else setStatus('ошибка при вводе данных!')
+    }
+
+    const onMouse = () => {
+        if (pass !== login && token) setStatus('ошибка при вводе данных!')
     }
 
     return (
@@ -63,54 +71,71 @@ const Forgot: React.FC<LoginPropsType> = (
 
             <div className={s.form}>
                 <div className={s.item}>
-                    Восстановление пароля
+                    {token && pass && pass === login
+                        ? 'Пароль совпадает!'
+                        : token && status === 'ошибка при вводе данных!'
+                            ? 'Пароль не совпадает!'
+                            : 'Восстановление пароля'}
                 </div>
 
                 <div className={s.item}>
                     <input
-                        placeholder={'введите ваш e-mail'}
+                        placeholder={!token
+                            ? 'введите ваш e-mail'
+                            : 'укажите новый пароль'
+                        }
                         className={s.input}
                         value={login}
+                        type={(show || !token) ? 'text' : 'password'}
                         onChange={onChangeLogin}
                     />
+                    {token && (
+                        <img
+                            className={show ? s.eye : s.union}
+                            src={show ? eye : union}
+                            alt={'eye'}
+                            onClick={() => setShow(!show)}
+                        />
+                    )}
                 </div>
-                <div className={s.statusText}>
-                    {status || <br/>}
-                </div>
-                <div className={s.item}>
-                    {/*<input*/}
-                    {/*    placeholder={'введите ваш пароль'}*/}
-                    {/*    className={s.input}*/}
-                    {/*    type={show ? 'text' : 'password'}*/}
-                    {/*    value={pass}*/}
-                    {/*    onChange={onChangePass}*/}
-                    {/*/>*/}
-                    {/*<img*/}
-                    {/*    className={show ? s.eye : s.union}*/}
-                    {/*    src={show ? eye : union}*/}
-                    {/*    alt={'eye'}*/}
-                    {/*    onClick={() => setShow(!show)}*/}
-                    {/*/>*/}
-                    <br/>
-                </div>
+                {
+                    !token ? (
+                        <>
+                            <div className={s.statusText}>
+                                {status || <br/>}
+                            </div>
+                            <div className={s.item}>
+                                <br/>
+                            </div>
+                        </>
+                    ) : (
+                        <div className={s.item}>
+                            <input
+                                placeholder={'повторите новый пароль'}
+                                className={s.input}
+                                type={show ? 'text' : 'password'}
+                                value={pass}
+                                onChange={onChangePass}
+                            />
+                            <img
+                                className={show ? s.eye : s.union}
+                                src={show ? eye : union}
+                                alt={'eye'}
+                                onClick={() => setShow(!show)}
+                            />
+                        </div>
+                    )
+                }
 
-                <div className={s.item}>
+                <div className={s.item} onMouseEnter={onMouse}>
                     <button
-                        disabled={!login || !pass}
+                        disabled={!login || (token && (!pass || login !== pass))}
                         className={s.button}
                         onClick={sendCallback}
                     >
                         готово
                     </button>
                 </div>
-
-                {/*<div className={s.item}>*/}
-                {/*    <div className={s.forgot}>*/}
-                {/*        <NavLink to={PATH.FORGOT} className={s.forgotLink}>*/}
-                {/*            забыли пороль?*/}
-                {/*        </NavLink>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
             </div>
         </div>
     )

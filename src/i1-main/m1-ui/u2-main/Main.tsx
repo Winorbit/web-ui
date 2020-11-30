@@ -36,6 +36,7 @@ const Main = () => {
 
                     <Route path={PATH.LOGIN} exact render={() => <LoginPage/>}/>
                     <Route path={PATH.FORGOT} exact render={() => <Forgot/>}/>
+                    <Route path={PATH.FORGOT + '/:token'} exact render={() => <Forgot/>}/>
 
                     <Route
                         path={PATH.ACCOUNT}
