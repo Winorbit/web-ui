@@ -11,10 +11,12 @@ import LoginRedirect from '../u5-login-redirect/LoginRedirect'
 import LoginPage from '../../../i2-features/f1-login/l1-ui/LoginPage'
 import AccountPage from '../../../i2-features/f2-account/a1-ui/AccountPage'
 import Mail from '../../../i2-features/f5-mail/Mail'
+import Forgot from '../../../i2-features/f6-forgot/f1-ui/Forgot'
 
 export const PATH = {
     HOME: '/',
     LOGIN: '/login',
+    FORGOT: '/forgot',
     ACCOUNT: '/account',
     COURSES: '/courses',
     MAIL: '/mail',
@@ -33,6 +35,8 @@ const Main = () => {
                     <Route path={PATH.HOME} exact render={() => <Redirect to={PATH.LOGIN}/>}/>
 
                     <Route path={PATH.LOGIN} exact render={() => <LoginPage/>}/>
+                    <Route path={PATH.FORGOT} exact render={() => <Forgot/>}/>
+
                     <Route
                         path={PATH.ACCOUNT}
                         exact

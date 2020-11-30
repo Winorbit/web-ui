@@ -1,5 +1,7 @@
 import React, {ChangeEvent, useState} from 'react'
+import {NavLink} from 'react-router-dom'
 import s from './Login.module.css'
+import {PATH} from '../../../i1-main/m1-ui/u2-main/Main'
 import {StatusType} from './LoginPage'
 import logoDef from './login-def.png'
 import eye from './eye.png'
@@ -92,6 +94,14 @@ const Login: React.FC<LoginPropsType> = ({status, error, setStatus, send}) => {
                     >
                         авторизация
                     </button>
+                </div>
+
+                <div className={s.item}>
+                    <div className={s.forgot}>
+                        <NavLink to={PATH.FORGOT} className={s.forgotLink}>
+                            забыли пороль?
+                        </NavLink>
+                    </div>
                 </div>
             </div>
         </div>

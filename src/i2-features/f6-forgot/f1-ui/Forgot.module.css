@@ -121,3 +121,9 @@
 .forgotLink {
     color: white;
 }
+
+.statusText {
+    width: 442px;
+    text-align: left;
+    color: white;
+}
