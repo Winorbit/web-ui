@@ -1,7 +1,7 @@
 import React from 'react'
-import './App.css'
 import {Provider} from 'react-redux'
 import {HashRouter} from 'react-router-dom'
+import './App.css'
 import Main from '../u2-main/Main'
 import store from '../../m2-bll/store'
 

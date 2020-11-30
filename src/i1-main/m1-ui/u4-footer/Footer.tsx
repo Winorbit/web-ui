@@ -2,8 +2,8 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import s from './Footer.module.css'
 import {PATH} from '../u2-main/Main'
-import logo from './logo-orbit.png'
 import Contacts from '../u6-contacts/Contacts'
+import logo from './logo-orbit.png'
 
 const Footer = () => {
     return (
@@ -13,7 +13,6 @@ const Footer = () => {
                     <img src={logo} alt={'logo'}/>
                     <span>зимняя орбита</span>
                 </div>
-
 
                 <div className={s.item}>
                     <div className={s.head}>

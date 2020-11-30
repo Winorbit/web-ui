@@ -1,4 +1,4 @@
-import { InferActionsType } from './help'
+import {InferActionsType} from './help'
 import {UserType} from '../../i2-features/f2-account/a1-ui/Account'
 
 const initialState = {
