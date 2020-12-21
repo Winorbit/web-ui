@@ -44,21 +44,13 @@ const Main = () => {
                         render={() => <LoginRedirect isAuth={isAuth}><AccountPage/></LoginRedirect>}
                     />
 
-                    <Route
-                        path={PATH.COURSES}
-                        exact
-                        render={() => <CoursesPage/>}
-                    />
+                    <Route path={PATH.COURSES} exact render={() => <CoursesPage/>}/>
                     <Route
                         path={PATH.COURSES + '/:id'}
                         exact
                         render={() => <LoginRedirect isAuth={isAuth}><Course/></LoginRedirect>}
                     />
-                    <Route
-                        path={PATH.MAIL}
-                        exact
-                        render={() => <Mail/>}
-                    />
+                    <Route path={PATH.MAIL} exact render={() => <Mail/>}/>
 
                     <Route render={() => <div>404</div>}/>
                 </Switch>

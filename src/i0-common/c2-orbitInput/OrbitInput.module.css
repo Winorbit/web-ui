@@ -1,0 +1,22 @@
+.eye {
+    position: absolute;
+    margin-top: -29px;
+    margin-left: 411px;
+    z-index: 10;
+}
+
+.union {
+    position: absolute;
+    margin-top: -34px;
+    margin-left: 410px;
+    z-index: 10;
+}
+
+.input {
+    width: 422px;
+    height: 40px;
+    padding-left: 20px;
+
+    border: none;
+    outline: none;
+}

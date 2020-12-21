@@ -1,0 +1,60 @@
+.eye {
+    position: absolute;
+    margin-top: 6px;
+    margin-left: -24px;
+    z-index: 10;
+}
+
+.union {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: -25px;
+    z-index: 10;
+}
+
+.input {
+    width: 220px;
+    height: 24px;
+    padding-left: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+
+    border: none;
+    outline: none;
+}
+
+.redCircle {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    margin-top: -26px;
+    margin-left: 280px;
+
+    border: 2px solid #d81f1f;
+    border-radius: 50px;
+    z-index: 10;
+}
+
+.newRedCircle {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    margin-top: -26px;
+    margin-left: 250px;
+
+    border: 2px solid #d81f1f;
+    border-radius: 50px;
+    z-index: 10;
+}
+
+.whiteCircle {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    margin-top: -26px;
+    margin-left: 250px;
+
+    border: 2px solid white;
+    border-radius: 50px;
+    z-index: 10;
+}
+

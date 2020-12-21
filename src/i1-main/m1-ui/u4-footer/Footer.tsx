@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 import s from './Footer.module.css'
 import {PATH} from '../u2-main/Main'
 import Contacts from '../u6-contacts/Contacts'
-import logo from './logo-orbit.png'
+import logo from './../../../assets/logo-orbit2.png'
 
 const Footer = () => {
     return (

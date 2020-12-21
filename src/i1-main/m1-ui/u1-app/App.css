@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'sansation-light';
-    src: url('./sansation-light.ttf') format('truetype');
+    src: url('./../../../assets/sansation-light.ttf') format('truetype');
     font-style: normal;
     font-weight: normal;
 }

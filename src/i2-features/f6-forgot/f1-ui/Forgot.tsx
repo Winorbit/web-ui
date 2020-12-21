@@ -1,100 +1,69 @@
 import React, {ChangeEvent, useState} from 'react'
-import {NavLink, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import s from './Forgot.module.css'
-import {PATH} from '../../../i1-main/m1-ui/u2-main/Main'
-import logoDef from './login-def.png'
-import eye from './eye.png'
-import union from './Union.png'
-import errorImg from './error.png'
-import ok from './ok.png'
+import OrbitForm, {StatusType} from '../../../i0-common/c1-orbitForm/OrbitForm'
+import OrbitButton from '../../../i0-common/c3-orbitButton/OrbitButton'
+import OrbitInput from '../../../i0-common/c2-orbitInput/OrbitInput'
 
-type LoginPropsType = {
-    // status: StatusType
-    // error: string
-    // setStatus: (status: StatusType) => void
-    // send: (login: string, pass: string) => void
-}
+const ok1 = 'на вашу почту выслана ссылка для смены пароля!'
 
-const Forgot: React.FC<LoginPropsType> = (
-    // {status, error, setStatus, send}
-) => {
+type ForgotPropsType = {}
+
+const Forgot: React.FC<ForgotPropsType> = () => {
     const {token} = useParams()
     const [login, setLogin] = useState<string>(!token ? 'me@gmail.com' : 'new pass')
     const [pass, setPass] = useState<string>('new pass')
-    const [show, setShow] = useState<boolean>(false)
-    const [status, setStatus] = useState<string>('')
+    const [status, setStatus] = useState<StatusType>('default')
+    const [result, setResult] = useState<string>('')
 
     const onChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
         setLogin(e.currentTarget.value)
+        setResult('')
         if (pass && e.currentTarget.value === pass) setStatus('ok')
-        else setStatus('')
+        else setStatus('default')
     }
     const onChangePass = (e: ChangeEvent<HTMLInputElement>) => {
         setPass(e.currentTarget.value)
-        if (e.currentTarget.value && login === e.currentTarget.value) setStatus('ok')
-        else setStatus('')
+        if (login && login === e.currentTarget.value) setStatus('ok')
+        else setStatus('default')
     }
 
     const sendCallback = () => {
-        // send(login, pass)
-        if (login === 'me@gmail.com' && !token) setStatus('на вашу почту выслана ссылка для смены пароля!')
+        if (login === 'me@gmail.com' && !token) {
+            setResult(ok1)
+        } else if (!token) setResult('ошибка при вводе данных!')
         else if (pass === login && token) setStatus('ok')
-        else setStatus('ошибка при вводе данных!')
+        else setStatus('error')
     }
 
     const onMouse = () => {
-        if (pass !== login && token) setStatus('ошибка при вводе данных!')
+        if (pass !== login && token) setStatus('error')
+        // if (pass !== login && token) setStatus('ошибка при вводе данных!')
     }
 
     return (
-        <div className={s.login}>
-            <div className={s.logo + ' ' + s.default}>
-                {!status
-                    ? <img src={logoDef} alt={'logo'} className={s.img}/>
-                    : (
-                        <div className={s.loading}>
-                            <img
-                                src={status === 'ошибка при вводе данных!'
-                                    ? errorImg
-                                    : ok
-                                }
-                                alt={status === 'ошибка при вводе данных!'
-                                    ? 'error'
-                                    : 'ok'
-                                }
-                                className={s.status}
-                            />
-                        </div>
-                    )
-                }
-            </div>
-
+        <OrbitForm status={status}>
             <div className={s.form}>
                 <div className={s.item}>
                     {token && pass && pass === login
                         ? 'Пароль совпадает!'
-                        : token && status === 'ошибка при вводе данных!'
+                        : token && status === 'error'
                             ? 'Пароль не совпадает!'
                             : 'Восстановление пароля'}
                 </div>
 
                 <div className={s.item}>
-                    <input
-                        placeholder={!token
-                            ? 'введите ваш e-mail'
-                            : 'укажите новый пароль'
-                        }
-                        className={s.input}
-                        value={login}
-                        type={(show || !token) ? 'text' : 'password'}
-                        onChange={onChangeLogin}
-                    />
-                    {token && (
-                        <img
-                            className={show ? s.eye : s.union}
-                            src={show ? eye : union}
-                            alt={'eye'}
-                            onClick={() => setShow(!show)}
+                    {result === ok1 ? (
+                        <div className={s.ok}>{login}</div>
+                    ) : (
+                        <OrbitInput
+                            inputType={token ? 'pass' : 'def'}
+                            placeholder={!token
+                                ? 'введите ваш e-mail'
+                                : 'укажите новый пароль'
+                            }
+                            value={login}
+                            onChange={onChangeLogin}
                         />
                     )}
                 </div>
@@ -102,7 +71,7 @@ const Forgot: React.FC<LoginPropsType> = (
                     !token ? (
                         <>
                             <div className={s.statusText}>
-                                {status || <br/>}
+                                {result || <br/>}
                             </div>
                             <div className={s.item}>
                                 <br/>
@@ -110,34 +79,30 @@ const Forgot: React.FC<LoginPropsType> = (
                         </>
                     ) : (
                         <div className={s.item}>
-                            <input
+                            <OrbitInput
+                                inputType={'pass'}
                                 placeholder={'повторите новый пароль'}
-                                className={s.input}
-                                type={show ? 'text' : 'password'}
                                 value={pass}
                                 onChange={onChangePass}
-                            />
-                            <img
-                                className={show ? s.eye : s.union}
-                                src={show ? eye : union}
-                                alt={'eye'}
-                                onClick={() => setShow(!show)}
                             />
                         </div>
                     )
                 }
 
                 <div className={s.item} onMouseEnter={onMouse}>
-                    <button
-                        disabled={!login || (token && (!pass || login !== pass))}
-                        className={s.button}
-                        onClick={sendCallback}
-                    >
-                        готово
-                    </button>
+                    {result !== ok1 && (
+                        <div className={s.button}>
+                            <OrbitButton
+                                disabled={!login || (token && (!pass || login !== pass))}
+                                onClick={sendCallback}
+                            >
+                                готово
+                            </OrbitButton>
+                        </div>
+                    )}
                 </div>
             </div>
-        </div>
+        </OrbitForm>
     )
 }
 

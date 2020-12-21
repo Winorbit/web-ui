@@ -5,8 +5,7 @@ import {AppStoreType} from '../../../i1-main/m2-bll/store'
 import {PATH} from '../../../i1-main/m1-ui/u2-main/Main'
 import {LoginActions, signIn} from '../l2-bll/loginReducer'
 import Login from './Login'
-
-export type StatusType = 'default' | 'loading' | 'error' | 'ok'
+import {StatusType} from '../../../i0-common/c1-orbitForm/OrbitForm'
 
 const LoginPage = () => {
     const {loading, success, error} = useSelector((state: AppStoreType) => state.login)

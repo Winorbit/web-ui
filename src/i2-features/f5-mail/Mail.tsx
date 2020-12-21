@@ -1,16 +1,18 @@
-import React from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import s from './Mail.module.css'
-import mail from './mail.png'
+import mail from '../../assets/mail2.png'
+import OrbitInput from '../../i0-common/c2-orbitInput/OrbitInput'
+import OrbitButton from '../../i0-common/c3-orbitButton/OrbitButton'
 
 type LoginPropsType = {}
 
 const Mail: React.FC<LoginPropsType> = () => {
-    // const [login, setLogin] = useState<string>('me@gmail.com')
+    const [email, setEmail] = useState<string>('me@gmail.com')
 
-    // const onChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
-    //     setLogin(e.currentTarget.value)
-    //     setStatus('default')
-    // }
+    const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.currentTarget.value)
+        // setStatus('default')
+    }
 
     const sendCallback = () => {
     }
@@ -18,15 +20,19 @@ const Mail: React.FC<LoginPropsType> = () => {
     return (
         <div className={s.mail}>
             <div className={s.logo}>
-                <img src={mail} alt={'mail'} className={s.img}/>
+                <div className={s.loading}>
+                    <img src={mail} alt={'mail'} className={s.img}/>
+                </div>
             </div>
 
             <div className={s.form}>
 
                 <div className={s.item}>
-                    <input
+                    <OrbitInput
+                        inputType={'def'}
                         placeholder={'ваш email'}
-                        className={s.input}
+                        value={email}
+                        onChange={onChangeEmail}
                     />
                 </div>
                 <div className={s.item}>
@@ -35,14 +41,12 @@ const Mail: React.FC<LoginPropsType> = () => {
                     />
                 </div>
 
-                <div className={s.item}>
-                    <button
-                        className={s.button}
+                <div className={`${s.item} ${s.button}`}>
+                    <OrbitButton
                         onClick={sendCallback}
                     >
                         отправить
-                    </button>
-
+                    </OrbitButton>
                 </div>
             </div>
         </div>

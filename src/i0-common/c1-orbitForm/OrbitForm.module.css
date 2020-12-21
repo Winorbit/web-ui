@@ -1,0 +1,49 @@
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+}
+
+.logo {
+    height: 260px;
+    width: 260px;
+    margin-right: -155px;
+    z-index: 2;
+
+    border: #ffffff solid 30px;
+    border-radius: 300px;
+    background: #0093fe;
+}
+
+.img {
+    margin-top: 40px;
+    margin-left: 65px;
+}
+
+.default {
+    height: 260px;
+    width: 260px;
+    margin-right: -155px;
+    z-index: 2;
+
+    border: #ffffff solid 30px;
+    border-radius: 300px;
+    background: black;
+}
+
+.loading {
+    height: 240px;
+    width: 240px;
+    margin-left: 10px;
+    margin-top: 10px;
+    z-index: 3;
+
+    border-radius: 300px;
+    background: white;
+}
+
+.status {
+    margin-top: 60px;
+    margin-left: 40px;
+}
