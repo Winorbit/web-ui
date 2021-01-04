@@ -1,5 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). <br />
-...you have to install Node.js
+...you have to install [Node.js 14+](https://nodejs.org/en/) <br />
+...for install yarn: `mpm i yarn -g`
 
 ## Available Scripts
 

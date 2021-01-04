@@ -47,7 +47,7 @@ const ChangePass: React.FC<ChangePassPropsType> = ({}) => {
     }
 
     return (
-        <div>
+        <div className={s.all}>
             {editMode
                 ? !newPassEdit
                     ? (
