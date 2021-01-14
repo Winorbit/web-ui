@@ -18,8 +18,14 @@ type AccountPropsType = {
 
 const Account: React.FC<AccountPropsType> = ({profile}) => {
     const [item, setItem] = useState<'profile' | 'courses'>('profile')
+    const [checkedCurseId, setCheckedCourseId] = useState<string>('')
 
     const courseIds = profile ? profile.user_courses : []
+
+    const checkCourses = () => {
+        setItem('courses')
+        setCheckedCourseId('')
+    }
 
     return (
         <div className={s.account}>
@@ -31,7 +37,7 @@ const Account: React.FC<AccountPropsType> = ({profile}) => {
                     Личные данные
                 </div>
                 <div
-                    onClick={() => setItem('courses')}
+                    onClick={checkCourses}
                     className={s.item + ' ' + (item === 'courses' ? s.checked : '')}
                 >
                     Ваши курсы
@@ -39,10 +45,14 @@ const Account: React.FC<AccountPropsType> = ({profile}) => {
 
             </div>
 
-            <div className={s.checkedBlock}>
+            <div className={checkedCurseId ? s.checkedBlockCourse : s.checkedBlock}>
                 {item === 'profile'
                     ? <Profile profile={profile}/>
-                    : <Courses courseIds={courseIds}/>
+                    : <Courses
+                        courseIds={courseIds}
+                        checkedCurseId={checkedCurseId}
+                        setCheckedCourseId={setCheckedCourseId}
+                    />
                 }
             </div>
         </div>

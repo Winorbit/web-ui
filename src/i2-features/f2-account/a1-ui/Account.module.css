@@ -46,3 +46,10 @@
 
     background: linear-gradient(to top left, #01518a, #0094ff);
 }
+
+.checkedBlockCourse {
+    width: 680px;
+    height: 581px;
+
+    background: linear-gradient(to top left, #01518a, #0094ff);
+}

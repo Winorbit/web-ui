@@ -20,8 +20,39 @@
     color: black;
 }
 
-.item:hover {
-    border: 2px solid white;
-    box-shadow: 0 5px 7px rgba(0,0,0,0.6);
-    background: #f3f3f3;
+.checkedCourse {
+    width: 680px;
+    color: #f5f5f5;
+
+    box-sizing: border-box;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #bfbfbf;
+}
+
+.courseTitle {
+    color: #f5f5f5;
+    font-size: 38px;
+    font-family: 'sansation-light', serif;
+    /*text-decoration: underline;*/
+    border-bottom: 2px solid #f5f5f5;
+}
+
+.course {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.percent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 72px;
+    width: 72px;
+
+    margin-top: 5px;
+    border: 2px solid #f5f5f5;
+    border-radius: 50px;
 }

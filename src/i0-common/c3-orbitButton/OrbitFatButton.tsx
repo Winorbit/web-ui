@@ -4,16 +4,21 @@ import s from './OrbitFatButton.module.css'
 type OrbitFatButtonPropsType = {
     disabled?: boolean
     onClick?: () => void
+    blue?: boolean
 }
 
 const OrbitFatButton: React.FC<OrbitFatButtonPropsType> = (
-    {disabled, onClick, children}
+    {disabled, onClick, children, blue}
 ) => {
 
     return (
         <button
             disabled={disabled}
-            className={disabled ? s.disable : s.button}
+            className={disabled
+                ? s.disable
+                : blue
+                    ? s.blue
+                    : s.button}
             onClick={onClick}
         >
             {children}
