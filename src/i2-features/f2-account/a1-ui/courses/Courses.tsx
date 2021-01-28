@@ -49,7 +49,7 @@ const Courses: React.FC<CoursesPropsType> = ({courseIds, checkedCurseId, setChec
                         <div>
                             <div>Последний пройденный урок:</div>
                             <div>"{'хардкод'}"</div>
-                            <NavLink to={PATH.COURSES + '/' + (checkedCourse && checkedCourse.id)}>
+                            <NavLink to={PATH.COURSES + '/' + (checkedCourse && checkedCourse.id) + '/2'}>
                                 <OrbitFatButton blue>перейти</OrbitFatButton>
                             </NavLink>
                         </div>

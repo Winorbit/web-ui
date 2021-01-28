@@ -50,6 +50,13 @@ const Main = () => {
                         exact
                         render={() => <LoginRedirect isAuth={isAuth}><Course/></LoginRedirect>}
                     />
+                    <Route
+                        path={PATH.COURSES + '/:id/:les_id'}
+                        exact
+                        render={() => <LoginRedirect isAuth={isAuth}><Course/></LoginRedirect>}
+                    />
+
+
                     <Route path={PATH.MAIL} exact render={() => <Mail/>}/>
 
                     <Route render={() => <div>404</div>}/>
