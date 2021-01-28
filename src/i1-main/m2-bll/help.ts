@@ -9,7 +9,7 @@ export type GetAppStoreType = () => AppStoreType
 
 export const tryCatch = async (
     logic: () => void,
-    setError: (error: string) => void,
+    setError: (error: string) => void, // | {any}: data
     info: string
 ) => {
     try {

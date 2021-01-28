@@ -14,7 +14,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (loading && status !== 'loading') setStatus('loading')
-        if (error && status !== error) setStatus('error')
+        if (error && status !== 'error') setStatus('error')
 
         if (success && status !== 'ok') {
             setStatus('ok')
