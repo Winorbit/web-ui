@@ -17,7 +17,7 @@ const Course = () => {
         dispatch(getLessonsForCourse(course_id))
     }, [dispatch, course_id])
 
-    // const course = lessons.filter(l => l.cours === course_id)
+    // const course = lessons.filter(l => l.course === course_id)
     const mappedLesson = lessons[lesson] ? lessons[lesson].content : 'error'
 
     // const course = getCourse(lesson_id)
