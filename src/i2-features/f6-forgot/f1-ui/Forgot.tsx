@@ -28,17 +28,19 @@ const Forgot: React.FC<ForgotPropsType> = () => {
         else setStatus('default')
     }
 
-    const sendCallback = () => {
+    const sendCallback = () => { // заглушка // create reducer/api , get isLoading/error/ok
+        // send mail
         if (login === 'me@gmail.com' && !token) {
             setResult(ok1)
         } else if (!token) setResult('ошибка при вводе данных!')
+
+            // send new pass
         else if (pass === login && token) setStatus('ok')
         else setStatus('error')
     }
 
     const onMouse = () => {
         if (pass !== login && token) setStatus('error')
-        // if (pass !== login && token) setStatus('ошибка при вводе данных!')
     }
 
     return (
