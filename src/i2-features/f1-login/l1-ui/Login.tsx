@@ -15,7 +15,7 @@ type LoginPropsType = {
 
 const Login: React.FC<LoginPropsType> = ({status, error, setStatus, send}) => {
     const [login, setLogin] = useState<string>('me@gmail.com')
-    const [pass, setPass] = useState<string>('y3jPqdFvNtB6Q96')
+    const [pass, setPass] = useState<string>('1234567q')
 
     const onChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
         setLogin(e.currentTarget.value)
@@ -60,13 +60,13 @@ const Login: React.FC<LoginPropsType> = ({status, error, setStatus, send}) => {
                     </OrbitButton>
                 </div>
 
-                <div className={s.item}>
-                    <div className={s.forgot}>
-                        <NavLink to={PATH.FORGOT} className={s.forgotLink}>
-                            забыли пороль?
-                        </NavLink>
-                    </div>
-                </div>
+                {/*<div className={s.item}>*/}
+                {/*    <div className={s.forgot}>*/}
+                {/*        <NavLink to={PATH.FORGOT} className={s.forgotLink}>*/}
+                {/*            забыли пороль?*/}
+                {/*        </NavLink>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </OrbitForm>
     )

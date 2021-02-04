@@ -1,0 +1,62 @@
+.video {
+    position: relative;
+    margin: 30px;
+}
+
+.block {
+    position: absolute;
+    width: 285px;
+    height: 240px;
+}
+
+.titleBlock {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 220px;
+    height: 165px;
+    margin-top: 35px;
+    margin-left: 30px;
+
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.9);
+
+}
+
+.button {
+    width: 136px;
+    height: 44px;
+
+    border: 2px solid black;
+    color: black;
+    outline: none;
+}
+
+.button:hover {
+    background: black;
+    color: rgba(255, 255, 255, 0.9);;
+}
+
+.play {
+    margin: 10px;
+}
+
+.modal {
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    z-index: 20;
+}
+
+.inModal {
+    border: 10px solid #0094ff;
+    background: black;
+}

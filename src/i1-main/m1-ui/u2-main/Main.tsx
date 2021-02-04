@@ -41,7 +41,11 @@ const Main = () => {
                     <Route
                         path={PATH.ACCOUNT}
                         exact
-                        render={() => <LoginRedirect isAuth={isAuth}><AccountPage/></LoginRedirect>}
+                        render={() => (
+                            // <LoginRedirect isAuth={isAuth}>
+                                <AccountPage/>
+                            // </LoginRedirect>
+                        )}
                     />
 
                     <Route path={PATH.COURSES} exact render={() => <CoursesPage/>}/>
