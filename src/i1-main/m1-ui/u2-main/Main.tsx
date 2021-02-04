@@ -42,9 +42,9 @@ const Main = () => {
                         path={PATH.ACCOUNT}
                         exact
                         render={() => (
-                            // <LoginRedirect isAuth={isAuth}>
+                            <LoginRedirect isAuth={isAuth}>
                                 <AccountPage/>
-                            // </LoginRedirect>
+                            </LoginRedirect>
                         )}
                     />
 
