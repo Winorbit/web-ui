@@ -49,7 +49,7 @@ const Profile: React.FC<ProfilePropsType> = ({profile}) => {
                 <div className={s.item}>{email}</div>
             </div>
 
-            <ChangePass/>
+            {/*<ChangePass/>*/}
         </div>
     )
 }

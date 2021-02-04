@@ -8,7 +8,7 @@ export type LessonType = {
     title: string
     description: string
     content: string
-    cours: string
+    course: string
 }
 
 const initialState = {
@@ -105,7 +105,7 @@ export const getLessons = (): ThunkAction<ReturnVoid, AppStoreType, ExtraArg, Le
 }
 export const getLessonsForCourse = (courseId: string): ThunkAction<ReturnVoid, AppStoreType, ExtraArg, LessonsActionsType> => async (
     dispatch,
-    // getStore: GetAppStoreType
+    // getStore
 ) => {
     dispatch(LessonsActions.setLoading(true))
 

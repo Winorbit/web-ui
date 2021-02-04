@@ -1,0 +1,38 @@
+.videoPage {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+
+    height: 610px;
+    max-width: 1400px;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+}
+
+.arrow {
+    box-sizing: border-box;
+    padding-left: 18px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    background: #0094ff;
+}
+
+.page {
+    color: black;
+    margin: 20px;
+}
+
+.activePage {
+    color: #0094ff;
+    margin: 20px;
+}

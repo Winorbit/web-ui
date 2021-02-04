@@ -6,8 +6,8 @@ import {AppStoreType} from '../../../i1-main/m2-bll/store'
 import {getLessonsForCourse} from '../c2-bll/lessonsReducer'
 
 const Course = () => {
-    const {id: course_id} = useParams()
-    const [lesson, setLesson] = useState<number>(0)
+    const {id: course_id, les_id} = useParams()
+    const [lesson, setLesson] = useState<number>(+les_id || 0)
     // const [selectedTerm, selectTerm] = useState<string>('')
 
     const {lessons} = useSelector((store: AppStoreType) => store.lessons)
@@ -17,7 +17,7 @@ const Course = () => {
         dispatch(getLessonsForCourse(course_id))
     }, [dispatch, course_id])
 
-    // const course = lessons.filter(l => l.cours === course_id)
+    // const course = lessons.filter(l => l.course === course_id)
     const mappedLesson = lessons[lesson] ? lessons[lesson].content : 'error'
 
     // const course = getCourse(lesson_id)

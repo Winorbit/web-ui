@@ -5,7 +5,7 @@ import {AppActions, AppActionsType} from '../../../i1-main/m2-bll/appReducer'
 import {InferActionsType, ReturnVoid, ExtraArg, tryCatch} from '../../../i1-main/m2-bll/help'
 
 const initialState = {
-    error: '',
+    error: '', // | {any}: data
     loading: false,
     success: false,
 }
@@ -57,7 +57,7 @@ export const LoginActions = {
         type: 'login/SET_SUCCESS',
         success,
     } as const),
-    setError: (error: string) => ({
+    setError: (error: string) => ({ // | {any}: data
         type: 'login/SET_ERROR',
         error,
     } as const),
@@ -68,7 +68,7 @@ export const signIn = (
     email: string, password: string
 ): ThunkAction<ReturnVoid, AppStoreType, ExtraArg, LoginActionsType | AppActionsType> => async (
     dispatch,
-    // getStore: GetAppStoreType
+    // getStore
 ) => {
     dispatch(LoginActions.setLoading(true))
 
@@ -86,7 +86,7 @@ export const signIn = (
 
             console.log('winter-orbit, Login Success!', data)
         },
-        (e) => dispatch(LoginActions.setError(e)),
+        (e) => dispatch(LoginActions.setError(e)), // | {any}: data
         'Login',
     )
 }

@@ -27,8 +27,8 @@ const ChangePass: React.FC<ChangePassPropsType> = ({}) => {
         setPass2(e.currentTarget.value)
         setOldPassError(false)
     }
-    const checkOldPass = () => {
-        if (!newPassEdit) {
+    const checkOldPass = () => { // заглушка
+        if (!newPassEdit) { // проверка старого пароля
             if (pass !== '1111') {
                 setPass('')
                 setOldPassError(true)
@@ -36,7 +36,7 @@ const ChangePass: React.FC<ChangePassPropsType> = ({}) => {
                 setPass('')
                 setNewPassEdit(true)
             }
-        } else {
+        } else { // отправка нового пароля
             if (pass !== pass2) setOldPassError(true)
             else {
                 setEditMode(false)

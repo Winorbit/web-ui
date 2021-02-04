@@ -26,13 +26,13 @@ const Header: React.FC<HeaderPropsType> = ({isAuth}) => {
                 >
                     <span className={s.text}>кабинет</span>
                 </NavLink>
-                <NavLink
-                    to={PATH.COURSES}
-                    activeClassName={s.active + ' ' + s.item}
-                    className={s.link + ' ' + s.item}
-                >
-                    <span className={s.text}>курсы</span>
-                </NavLink>
+                {/*<NavLink*/}
+                {/*    to={PATH.COURSES}*/}
+                {/*    activeClassName={s.active + ' ' + s.item}*/}
+                {/*    className={s.link + ' ' + s.item}*/}
+                {/*>*/}
+                {/*    <span className={s.text}>курсы</span>*/}
+                {/*</NavLink>*/}
                 <NavLink
                     to={PATH.MAIL}
                     activeClassName={s.active + ' ' + s.item}
