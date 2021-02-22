@@ -1,17 +1,27 @@
+.pageAll {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: calc(100vw - 390px);
+}
+
 .videoPage {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     overflow-y: auto;
 
     height: 610px;
-    max-width: 1400px;
+    max-width: 1300px;
 }
 
 .pagination {
+    margin: 30px 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 70vw;
+    justify-content: space-between;
+    /*width: 70vw;*/
 }
 
 .arrow {
@@ -27,12 +37,25 @@
     background: #0094ff;
 }
 
+.lines {
+    display: flex;
+    flex-direction: column;
+}
+
 .page {
     color: black;
     margin: 20px;
+    width: 50px;
+    height: 5px;
+    background: #505050;
+    border-radius: 5px;
 }
 
 .activePage {
     color: #0094ff;
     margin: 20px;
+    width: 50px;
+    height: 5px;
+    background: #0094ff;
+    border-radius: 5px;
 }

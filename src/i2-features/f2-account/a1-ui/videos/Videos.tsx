@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import {instance} from "../../../../i1-main/m3-dal/instance";
 import Video from './Video'
 import s from './Videos.module.css'
+import up from './../../../../assets/up.png'
+import down from './../../../../assets/down.png'
 
 export type VideoType = {
     description: string
@@ -10,7 +12,18 @@ export type VideoType = {
 }
 
 const Videos = () => {
-    const [videos, setVideos] = useState<VideoType[]>([])
+    const [videos, setVideos] = useState<VideoType[]>([
+        // {source_link: '', title: 'xxx', description: ''},
+        // {source_link: '', title: 'xxx', description: ''},
+        // {source_link: '', title: 'xxx', description: ''},
+        // {source_link: '', title: 'xxx', description: ''},
+        // {source_link: '', title: 'xxx', description: ''},
+        // {source_link: '', title: 'xxx', description: ''},
+        // {source_link: '', title: 'xxx', description: ''},
+        // {source_link: '', title: 'xxx', description: ''},
+        // {source_link: '', title: 'xxx', description: ''},
+
+    ])
     const [page, setPage] = useState(1)
 
     useEffect(() => {
@@ -19,10 +32,10 @@ const Videos = () => {
 
                 setVideos([
                     ...res.data.results,
-                    ...res.data.results,
-                    ...res.data.results,
-                    ...res.data.results,
-                    ...res.data.results,
+                    // ...res.data.results,
+                    // ...res.data.results,
+                    // ...res.data.results,
+                    // ...res.data.results,
                 ])
             })
 
@@ -32,26 +45,36 @@ const Videos = () => {
         .fill(0).map((e, i) => i + 1)
 
     return (
-        <>
+        <div className={s.pageAll}>
             <div className={s.pagination}>
-                <div className={s.arrow} onClick={() => page > 1 && setPage(page - 1)}>
-                    {'<'}
-                </div>
-                {pages.map(p => (
-                    <div
-                        key={p + p}
-                        className={p === page ? s.activePage : s.page}
-                        onClick={() => setPage(p)}
-                    >{p}</div>
-                ))}
                 <div
-                    className={s.arrow}
+                    // className={s.arrow}
+                    onClick={() => page > 1 && setPage(page - 1)}
+                >
+                    {/*{'<'}*/}
+                    <img src={up} alt={'up'}/>
+                </div>
+
+                <div className={s.lines}>
+                    {pages.map(p => (
+                        <div
+                            key={p + p}
+                            className={p === page ? s.activePage : s.page}
+                            onClick={() => setPage(p)}
+                        />
+                        // >{p}</div>
+                    ))}
+                </div>
+
+                <div
+                    // className={s.arrow}
                     onClick={() => {
                         page < ((videos.length - videos.length % 8) / 8) + (videos.length % 8 ? 1 : 0)
                         && setPage(page + 1)
                     }}
                 >
-                    {'>'}
+                    {/*{'>'}*/}
+                    <img src={down} alt={'down'}/>
                 </div>
 
             </div>
@@ -63,7 +86,7 @@ const Videos = () => {
                     <Video key={v.title + i} video={v} i={i}/>
                 ))}
             </div>
-        </>
+        </div>
 
     )
 }
