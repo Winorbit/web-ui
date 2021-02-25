@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import s from './Profile.module.css'
 import {UserType} from '../Account'
 import ChangePass from './changePass/ChangePass'
 import close from './../../../../assets/close.png'
 import OrbitLittleInput from "../../../../i0-common/c2-orbitInput/OrbitLittleInput";
+import {instance} from "../../../../i1-main/m3-dal/instance";
 
 type EditType = 'none' | 'name' | 'email'
 
@@ -16,10 +17,31 @@ const Profile: React.FC<ProfilePropsType> = ({profile}) => {
     const name = profile ? profile.username : 'no name'
     const email = profile ? profile.email : 'no email'
     const [edit, setEdit] = useState<EditType>('none')
+    const [value, setValue] = useState('')
+    const [status, setStatus] = useState<string>('default')
+
+    const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
+        setValue(e.currentTarget.value)
+    }
 
     const editName = () => setEdit('name')
     const editEmail = () => setEdit('email')
-    const closeEdit = () => setEdit('none')
+    const closeEdit = async () => {
+        if (status !== 'loading') {
+            const valueName = edit
+            const id = profile ? profile.id : 0
+
+            setEdit('none')
+            try {
+                setStatus('loading')
+                // await instance.post('update_user_info/' + id, {[valueName]: value})
+                setStatus('success')
+                // change profile in redux
+            } catch (e) {
+                setStatus(e.message)
+            }
+        }
+    }
 
     return (
         <div className={s.profile}>
@@ -32,6 +54,8 @@ const Profile: React.FC<ProfilePropsType> = ({profile}) => {
                     <div className={edit === 'name' ? s.nameEdit : s.emailEdit}>
                         редактировать
                         <OrbitLittleInput
+                            value={value}
+                            onChange={onChangeValue}
                             pass={false}
                         />
                     </div>
