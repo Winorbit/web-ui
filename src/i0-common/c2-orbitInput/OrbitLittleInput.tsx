@@ -7,14 +7,22 @@ type OrbitLittleInputPropsType = {
     placeholder?: string
     value?: string
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+    onEnter?: () => void
     circle?: 'red' | 'red2' | 'white'
     pass?: boolean
 }
 
 const OrbitLittleInput: React.FC<OrbitLittleInputPropsType> = (
-    {value, onChange, circle, placeholder, pass = true}
+    {
+        value, onChange, onEnter, circle, placeholder,
+        pass = true
+    }
 ) => {
     const [show, setShow] = useState<boolean>(!pass)
+
+    const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter' && onEnter) onEnter()
+    }
 
     return (
         <>
@@ -25,6 +33,7 @@ const OrbitLittleInput: React.FC<OrbitLittleInputPropsType> = (
                     type={show ? 'text' : 'password'}
                     value={value}
                     onChange={onChange}
+                    onKeyDown={onKeyDown}
                     autoFocus={!pass}
                 />
                 {pass && (

@@ -25,7 +25,7 @@ const Mail: React.FC<LoginPropsType> = () => {
         if (status !== 'loading')
             try {
                 setStatus('loading')
-                await instance.post('send_email/', {email, message})
+                await instance.post('send_email', {email, message})
                 setStatus('success')
             } catch (e) {
                 setStatus(e.message)

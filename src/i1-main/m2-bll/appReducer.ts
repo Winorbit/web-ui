@@ -18,6 +18,12 @@ export const appReducer = (
                 data: action.data,
             }
         }
+        case 'app/UPDATE_USER': {
+            return {
+                ...state,
+                data: action.data,
+            }
+        }
 
         default: {
             return state
@@ -31,6 +37,10 @@ export const AppActions = {
     setIsAuth: (isAuth: boolean, data?: UserType) => ({
         type: 'app/SET_IS_AUTH',
         isAuth,
+        data,
+    } as const),
+    updateUser: (data?: UserType) => ({
+        type: 'app/UPDATE_USER',
         data,
     } as const),
 

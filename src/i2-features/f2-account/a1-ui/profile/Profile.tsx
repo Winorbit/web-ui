@@ -1,10 +1,12 @@
 import React, {ChangeEvent, useState} from 'react'
 import s from './Profile.module.css'
 import {UserType} from '../Account'
-import ChangePass from './changePass/ChangePass'
+// import ChangePass from './changePass/ChangePass'
 import close from './../../../../assets/close.png'
-import OrbitLittleInput from "../../../../i0-common/c2-orbitInput/OrbitLittleInput";
+import OrbitLittleInput from '../../../../i0-common/c2-orbitInput/OrbitLittleInput'
 import {instance} from "../../../../i1-main/m3-dal/instance";
+import {useDispatch} from 'react-redux'
+import {AppActions} from '../../../../i1-main/m2-bll/appReducer'
 
 type EditType = 'none' | 'name' | 'email'
 
@@ -24,19 +26,27 @@ const Profile: React.FC<ProfilePropsType> = ({profile}) => {
         setValue(e.currentTarget.value)
     }
 
-    const editName = () => setEdit('name')
-    const editEmail = () => setEdit('email')
+    const editName = () => {
+        setValue(name)
+        setEdit('name')
+    }
+    const editEmail = () => {
+        setValue(email)
+        setEdit('email')
+    }
+
+    const dispatch = useDispatch()
     const closeEdit = async () => {
-        if (status !== 'loading') {
+        if (status !== 'loading' && profile) {
             const valueName = edit
-            const id = profile ? profile.id : 0
 
             setEdit('none')
             try {
                 setStatus('loading')
-                // await instance.post('update_user_info/' + id, {[valueName]: value})
+                await instance.put('update_user_info/' + profile.id, {[valueName]: value})
                 setStatus('success')
                 // change profile in redux
+                dispatch(AppActions.updateUser({...profile, [valueName]: value}))
             } catch (e) {
                 setStatus(e.message)
             }
@@ -56,6 +66,7 @@ const Profile: React.FC<ProfilePropsType> = ({profile}) => {
                         <OrbitLittleInput
                             value={value}
                             onChange={onChangeValue}
+                            onEnter={closeEdit}
                             pass={false}
                         />
                     </div>
