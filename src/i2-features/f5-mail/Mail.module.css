@@ -72,6 +72,14 @@
     resize: none;
 }
 
+.errorAnswer {
+    color: red;
+}
+
+.success {
+    color: #00fe04;
+}
+
 .button {
     padding-left: 200px;
 }

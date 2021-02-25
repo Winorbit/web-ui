@@ -3,19 +3,40 @@ import s from './Mail.module.css'
 import mail from '../../assets/mail2.png'
 import OrbitInput from '../../i0-common/c2-orbitInput/OrbitInput'
 import OrbitButton from '../../i0-common/c3-orbitButton/OrbitButton'
+import {instance} from "../../i1-main/m3-dal/instance";
 
 type LoginPropsType = {}
 
 const Mail: React.FC<LoginPropsType> = () => {
     const [email, setEmail] = useState<string>('me@gmail.com')
+    const [message, setMessage] = useState<string>('')
+    const [status, setStatus] = useState<string>('default')
 
     const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value)
-        // setStatus('default')
+        setStatus('default')
+    }
+    const onChangeMessage = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        setMessage(e.currentTarget.value)
+        setStatus('default')
     }
 
-    const sendCallback = () => {
+    const sendCallback = async () => {
+        if (status !== 'loading')
+            try {
+                setStatus('loading')
+                await instance.post('send_email/', {email, message})
+                setStatus('success')
+            } catch (e) {
+                setStatus(e.message)
+            }
     }
+
+    const textClass = status === 'success'
+        ? ' ' + s.success
+        : (status !== 'loading' && status !== 'default')
+            ? ' ' + s.errorAnswer
+            : ''
 
     return (
         <div className={s.mail}>
@@ -37,13 +58,16 @@ const Mail: React.FC<LoginPropsType> = () => {
                 </div>
                 <div className={s.item}>
                     <textarea
-                        className={s.textarea}
+                        value={message}
+                        onChange={onChangeMessage}
+                        className={s.textarea + textClass}
                     />
                 </div>
 
                 <div className={`${s.item} ${s.button}`}>
                     <OrbitButton
                         onClick={sendCallback}
+                        disabled={status === 'loading'}
                     >
                         отправить
                     </OrbitButton>
