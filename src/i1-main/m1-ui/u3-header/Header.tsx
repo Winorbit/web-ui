@@ -50,14 +50,14 @@ const Header: React.FC<HeaderPropsType> = ({isAuth}) => {
 
             <div className={s.end}>
                 <div>
-                {/*    <Contacts/>*/}
+                    {/*    <Contacts/>*/}
                 </div>
 
                 <div className={s.person}>
                     {!isAuth
                         ? (
                             <>
-                                <div className={s.text}>вход в орбиту</div>
+                                <NavLink className={s.text} to={PATH.LOGIN}>вход в орбиту</NavLink>
                                 <img src={men} alt={'person'}/>
                             </>
                         ) : (
