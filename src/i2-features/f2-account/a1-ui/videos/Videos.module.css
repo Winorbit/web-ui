@@ -59,3 +59,7 @@
     background: #0094ff;
     border-radius: 5px;
 }
+
+.rotate {
+    transform: rotate(180deg);
+}

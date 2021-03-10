@@ -41,6 +41,9 @@ const Videos = () => {
 
     }, [setVideos])
 
+    const start = page === 1
+    const end = page === ((videos.length - videos.length % 8) / 8) + (videos.length % 8 ? 1 : 0)
+
     const pages = Array(((videos.length - videos.length % 8) / 8) + (videos.length % 8 ? 1 : 0))
         .fill(0).map((e, i) => i + 1)
 
@@ -51,8 +54,11 @@ const Videos = () => {
                     // className={s.arrow}
                     onClick={() => page > 1 && setPage(page - 1)}
                 >
-                    {/*{'<'}*/}
-                    <img src={up} alt={'up'}/>
+                    {start ? (
+                        <img src={up} alt={'up'}/>
+                    ) : (
+                        <img className={s.rotate} src={down} alt={'down'}/>
+                    )}
                 </div>
 
                 <div className={s.lines}>
@@ -73,8 +79,11 @@ const Videos = () => {
                         && setPage(page + 1)
                     }}
                 >
-                    {/*{'>'}*/}
-                    <img src={down} alt={'down'}/>
+                    {end ? (
+                        <img className={s.rotate} src={up} alt={'up'}/>
+                    ) : (
+                        <img src={down} alt={'down'}/>
+                    )}
                 </div>
 
             </div>
