@@ -1,8 +1,8 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+// import {NavLink} from 'react-router-dom'
 import s from './Footer.module.css'
-import {PATH} from '../u2-main/Main'
-import Contacts from '../u6-contacts/Contacts'
+// import {PATH} from '../u2-main/Main'
+// import Contacts from '../u6-contacts/Contacts'
 import logo from './../../../assets/logo-orbit2.png'
 
 const Footer = () => {
@@ -14,14 +14,14 @@ const Footer = () => {
                     <span>зимняя орбита</span>
                 </div>
 
-                <div className={s.item}>
-                    <div className={s.head}>
-                        Контакты
-                    </div>
+                {/*<div className={s.item}>*/}
+                {/*    <div className={s.head}>*/}
+                {/*        Контакты*/}
+                {/*    </div>*/}
 
-                    <NavLink to={PATH.MAIL} className={s.link}>по учебной части</NavLink>
-                    <NavLink to={PATH.MAIL} className={s.link}>сотрудничество</NavLink>
-                </div>
+                {/*    <NavLink to={PATH.MAIL} className={s.link}>по учебной части</NavLink>*/}
+                {/*    <NavLink to={PATH.MAIL} className={s.link}>сотрудничество</NavLink>*/}
+                {/*</div>*/}
 
                 {/*<div className={s.item}>*/}
                 {/*    <div>*/}
@@ -34,9 +34,9 @@ const Footer = () => {
                 {/*</div>*/}
             </div>
 
-            <div className={s.end}>
-                <div><Contacts/></div>
-            </div>
+            {/*<div className={s.end}>*/}
+            {/*    <div><Contacts/></div>*/}
+            {/*</div>*/}
         </div>
     )
 }
