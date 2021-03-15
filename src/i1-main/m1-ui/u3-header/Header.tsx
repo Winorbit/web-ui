@@ -5,9 +5,11 @@ import s from './Header.module.css'
 import {AppStoreType} from '../../m2-bll/store'
 import {PATH} from '../u2-main/Main'
 // import Contacts from '../u6-contacts/Contacts'
-import logo from './../../../assets/logo-ordit.png'
-import men from './../../../assets/men.png'
-import trueMen from './../../../assets/true-men.png'
+// import logo from './../../../assets/logo-ordit.png'
+import newLogo from './../../../assets/new-logo.svg'
+// import men from './../../../assets/men.png'
+// import trueMen from './../../../assets/true-men.png'
+import newMen from './../../../assets/new-man.svg'
 
 type HeaderPropsType = {
     isAuth: boolean
@@ -44,7 +46,7 @@ const Header: React.FC<HeaderPropsType> = ({isAuth}) => {
 
             <div className={s.center}>
                 <div className={s.text}>зимняя</div>
-                <img src={logo} alt={'logo'} width={'82px'}/>
+                <img src={newLogo} alt={'logo'}/>
                 <div className={s.text}>орбита</div>
             </div>
 
@@ -57,8 +59,8 @@ const Header: React.FC<HeaderPropsType> = ({isAuth}) => {
                     {!isAuth
                         ? (
                             <>
-                                <NavLink className={s.text} to={PATH.LOGIN}>вход в орбиту</NavLink>
-                                <img src={men} alt={'person'}/>
+                                <NavLink className={s.text} to={PATH.LOGIN}>авторизация</NavLink>
+                                <img src={newMen} alt={'person'}/>
                             </>
                         ) : (
                             <>
@@ -67,7 +69,7 @@ const Header: React.FC<HeaderPropsType> = ({isAuth}) => {
                                     <span>{username}</span>
                                 </div>
 
-                                <img src={trueMen} alt={'trueMen'}/>
+                                <img src={newMen} alt={'trueMen'}/>
                             </>
                         )
                     }
