@@ -11,7 +11,7 @@ jobs:
           command: |
             git config --global user.email "winorbita@gmail.com"
             git config --global user.name "WinterOrbit"
-            git remote set-url origin https://winorbit:$GITHUB_PASS@github.com/Winorbit/web_ui.git
+            git remote set-url origin https://winorbit:$GITHUB_PASS@github.com/Winorbit/web-ui.git
             CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
             DATETIME_NOW=$(date +"%Y-%m-%d-%H-%M")
             git tag -a "${CURRENT_BRANCH_NAME}.${DATETIME_NOW}" -m "comment"
