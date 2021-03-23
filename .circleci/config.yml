@@ -1,24 +1,10 @@
 version: 2.1
-orbs:
-  python: circleci/python@1.0.0
 jobs:
   build:
-    docker:
-      - image: circleci/python:3.8
-      - image: circleci/buildpack-deps:stretch
     steps:
-      - checkout
-      - python/install-packages
+      - tag_new_commit
       - run:
-          name: Run django tests
-          command: |
-            pipenv run python manage.py makemigrations
-            pipenv run python manage.py migrate
-            pipenv run python manage.py test
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Build Docker image
+          name: Add tag to commit
           command: |
             git config --global user.email "winorbita@gmail.com"
             git config --global user.name "WinterOrbit"
