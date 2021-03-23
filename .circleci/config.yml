@@ -1,6 +1,8 @@
 version: 2.1
 jobs:
   build:
+    docker:
+      - image: circleci/buildpack-deps:stretch
     steps:
       - tag_new_commit
       - run:
