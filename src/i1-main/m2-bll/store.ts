@@ -4,6 +4,7 @@ import {appReducer} from './appReducer'
 import {loginReducer} from '../../i2-features/f1-login/l2-bll/loginReducer'
 import {coursesReducer} from '../../i2-features/f2-account/a2-bll/coursesReducer'
 import {lessonsReducer} from '../../i2-features/f4-course/c2-bll/lessonsReducer'
+import {RELEASE} from '../../baseBackURL'
 
 const reducers = combineReducers({
     app: appReducer,
@@ -20,4 +21,4 @@ export default store
 export type AppStoreType = ReturnType<typeof reducers>
 
 // @ts-ignore
-window.store = store // for developers
+if (!RELEASE) window.store = store // for developers, off in release

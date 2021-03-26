@@ -4,3 +4,5 @@ const host = process.env.REACT_APP_HOST
 const port = process.env.REACT_APP_PORT
 
 export const baseURL = protocol + '://' + host + ':' + port
+
+export const RELEASE = process.env.REACT_APP_RELEASE || false
