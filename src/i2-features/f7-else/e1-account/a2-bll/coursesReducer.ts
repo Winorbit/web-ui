@@ -1,8 +1,8 @@
-import {InferActionsType, ReturnVoid, ExtraArg, tryCatch} from '../../../i1-main/m2-bll/help'
+import {InferActionsType, ReturnVoid, ExtraArg, tryCatch} from '../../../../i1-main/m2-bll/help'
 import { ThunkAction } from 'redux-thunk'
-import { AppStoreType } from '../../../i1-main/m2-bll/store'
+import { AppStoreType } from '../../../../i1-main/m2-bll/store'
 import {CoursesAPI} from '../a3-dal/CoursesAPI'
-import {RELEASE} from '../../../baseBackURL'
+import {RELEASE} from '../../../../baseBackURL'
 
 export type CourseType = {
     id: string

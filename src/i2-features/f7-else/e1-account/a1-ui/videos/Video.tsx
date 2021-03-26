@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {VideoType} from './Videos'
 import s from './Video.module.css'
-import play from './../../../../assets/play.svg'
+import play from '../../../../../assets/play.svg'
 
 type VideoPropsType = {
     video: VideoType

@@ -1,9 +1,9 @@
 import React, {ChangeEvent, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import s from './Forgot.module.css'
-import OrbitForm, {StatusType} from '../../../i0-common/c1-orbitForm/OrbitForm'
-import OrbitButton from '../../../i0-common/c3-orbitButton/OrbitButton'
-import OrbitInput from '../../../i0-common/c2-orbitInput/OrbitInput'
+import OrbitForm, {StatusType} from '../../../../i0-common/c1-orbitForm/OrbitForm'
+import OrbitButton from '../../../../i0-common/c3-orbitButton/OrbitButton'
+import OrbitInput from '../../../../i0-common/c2-orbitInput/OrbitInput'
 
 const ok1 = 'на вашу почту выслана ссылка для смены пароля!'
 

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import {instance} from "../../../../i1-main/m3-dal/instance";
+import {instance} from "../../../../../i1-main/m3-dal/instance";
 import Video from './Video'
 import s from './Videos.module.css'
-import up from './../../../../assets/up.png'
-import down from './../../../../assets/down.png'
+import up from '../../../../../assets/up.png'
+import down from '../../../../../assets/down.png'
 
 export type VideoType = {
     description: string

@@ -1,4 +1,4 @@
-import {instance} from '../../../i1-main/m3-dal/instance'
+import {instance} from '../../../../i1-main/m3-dal/instance'
 import {CourseType} from '../a2-bll/coursesReducer'
 
 export type GetCoursesRequestType = {

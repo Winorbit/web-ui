@@ -1,8 +1,8 @@
-import {AppStoreType} from '../../../i1-main/m2-bll/store'
+import {AppStoreType} from '../../../../i1-main/m2-bll/store'
 import {ThunkAction} from 'redux-thunk'
-import {ExtraArg, InferActionsType, ReturnVoid, tryCatch} from '../../../i1-main/m2-bll/help'
+import {ExtraArg, InferActionsType, ReturnVoid, tryCatch} from '../../../../i1-main/m2-bll/help'
 import {LessonsAPI} from '../c3-dal/LessonsAPI'
-import {RELEASE} from '../../../baseBackURL'
+import {RELEASE} from '../../../../baseBackURL'
 
 export type LessonType = {
     id: string
