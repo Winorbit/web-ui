@@ -2,16 +2,15 @@ import React from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import s from './Main.module.css'
 import Header from '../u3-header/Header'
-import Footer from '../u4-footer/Footer'
 import LoginPage from '../../../i2-features/f1-login/l1-ui/LoginPage'
+// import LoginRedirect from '../u5-login-redirect/LoginRedirect'
+import LessonsPage from '../../../i2-features/f2-lessons/LessonsPage'
 
 export const PATH = {
     HOME: '/',
     LOGIN: '/login',
 
-    // del
     // FORGOT: '/forgot',
-    // ACCOUNT: '/account',
 
     // лекции, урок, словарь, полезные ссылки
     LESSONS: '/lessons',
@@ -34,21 +33,22 @@ const Main = () => {
                     {/*<Route path={PATH.FORGOT} exact render={() => <Forgot/>}/>*/}
                     {/*<Route path={PATH.FORGOT + '/:token'} exact render={() => <Forgot/>}/>*/}
 
-                    {/*<Route*/}
-                    {/*    path={PATH.ACCOUNT}*/}
-                    {/*    exact*/}
-                    {/*    render={() => (*/}
-                    {/*        <LoginRedirect isAuth={isAuth}>*/}
-                    {/*            <AccountPage/>*/}
-                    {/*        </LoginRedirect>*/}
-                    {/*    )}*/}
-                    {/*/>*/}
+                    <Route
+                        path={PATH.LESSONS}
+                        exact
+                        render={() => (
+                            <>
+                                {/*<LoginRedirect>*/}
+                                    <LessonsPage/>
+                                {/*</LoginRedirect>*/}
+                            </>
+                        )}
+                    />
+
 
                     <Route render={() => <div>404</div>}/>
                 </Switch>
             </div>
-
-            <Footer/>
         </div>
     )
 }
