@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {VideoType} from "./Videos";
+import {VideoType} from './Videos'
 import s from './Video.module.css'
 import play from './../../../../assets/play.svg'
 

@@ -2,6 +2,7 @@ import {AppStoreType} from '../../../i1-main/m2-bll/store'
 import {ThunkAction} from 'redux-thunk'
 import {ExtraArg, InferActionsType, ReturnVoid, tryCatch} from '../../../i1-main/m2-bll/help'
 import {LessonsAPI} from '../c3-dal/LessonsAPI'
+import {RELEASE} from '../../../baseBackURL'
 
 export type LessonType = {
     id: string
@@ -97,7 +98,7 @@ export const getLessons = (): ThunkAction<ReturnVoid, AppStoreType, ExtraArg, Le
             dispatch(LessonsActions.setSuccess(true))
             dispatch(LessonsActions.setLessons(data))
 
-            console.log('winter-orbit, Get lessons Success!', data)
+            !RELEASE && console.log('winter-orbit, Get lessons Success!', data)
         },
         (e) => dispatch(LessonsActions.setError(e)),
         'Get lessons',
@@ -118,7 +119,7 @@ export const getLessonsForCourse = (courseId: string): ThunkAction<ReturnVoid, A
             dispatch(LessonsActions.setSuccess(true))
             dispatch(LessonsActions.setLessons(data))
 
-            console.log('winter-orbit, Get lessons Success!', data)
+            !RELEASE && console.log('winter-orbit, Get lessons Success!', data)
         },
         (e) => dispatch(LessonsActions.setError(e)),
         'Get lessons',

@@ -1,7 +1,6 @@
 import {instance} from '../../../i1-main/m3-dal/instance'
 import {CourseType} from '../a2-bll/coursesReducer'
 
-// export type GetCoursesRequestType = CourseType[]
 export type GetCoursesRequestType = {
     count: number
     next: any // any
