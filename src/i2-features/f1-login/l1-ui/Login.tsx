@@ -1,10 +1,11 @@
 import React, {ChangeEvent, useState} from 'react'
-import {NavLink} from 'react-router-dom'
+// import {NavLink} from 'react-router-dom'
 import s from './Login.module.css'
-import {PATH} from '../../../i1-main/m1-ui/u2-main/Main'
+// import {PATH} from '../../../i1-main/m1-ui/u2-main/Main'
 import OrbitForm, {StatusType} from '../../../i0-common/c1-orbitForm/OrbitForm'
 import OrbitInput from '../../../i0-common/c2-orbitInput/OrbitInput'
 import OrbitButton from '../../../i0-common/c3-orbitButton/OrbitButton'
+import {RELEASE} from '../../../baseBackURL'
 
 type LoginPropsType = {
     status: StatusType
@@ -14,8 +15,8 @@ type LoginPropsType = {
 }
 
 const Login: React.FC<LoginPropsType> = ({status, error, setStatus, send}) => {
-    const [login, setLogin] = useState<string>('me@gmail.com')
-    const [pass, setPass] = useState<string>('1234567q')
+    const [login, setLogin] = useState<string>(RELEASE ? '' : 'me@gmail.com')
+    const [pass, setPass] = useState<string>(RELEASE ? '' : '1234567q')
 
     const onChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
         setLogin(e.currentTarget.value)
@@ -51,7 +52,7 @@ const Login: React.FC<LoginPropsType> = ({status, error, setStatus, send}) => {
                     />
                 </div>
 
-                <div className={`${s.item} ${s.button}`}>
+                <div className={s.item + ' ' + s.button}>
                     <OrbitButton
                         disabled={!login || !pass}
                         onClick={sendCallback}

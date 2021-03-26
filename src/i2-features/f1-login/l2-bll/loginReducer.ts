@@ -3,6 +3,7 @@ import {ThunkAction} from 'redux-thunk'
 import {LoginAPI} from '../l3-dal/LoginAPI'
 import {AppActions, AppActionsType} from '../../../i1-main/m2-bll/appReducer'
 import {InferActionsType, ReturnVoid, ExtraArg, tryCatch} from '../../../i1-main/m2-bll/help'
+import {RELEASE} from '../../../baseBackURL'
 
 const initialState = {
     error: '', // | {any}: data
@@ -84,7 +85,7 @@ export const signIn = (
                 dispatch(LoginActions.setSuccess(false))
             }, 500)
 
-            console.log('winter-orbit, Login Success!', data)
+            !RELEASE && console.log('winter-orbit, Login Success!', data)
         },
         (e) => dispatch(LoginActions.setError(e)), // | {any}: data
         'Login',

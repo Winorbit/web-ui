@@ -13,7 +13,6 @@ type OrbitFormPropsType = {
 const OrbitForm: React.FC<OrbitFormPropsType> = (
     {status, children}
 ) => {
-
     return (
         <div className={s.form}>
             <div className={status !== 'default' ? s.logo : s.default}>

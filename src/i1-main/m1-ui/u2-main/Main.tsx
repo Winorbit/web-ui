@@ -10,8 +10,8 @@ export const PATH = {
     LOGIN: '/login',
 
     // del
-    FORGOT: '/forgot',
-    ACCOUNT: '/account',
+    // FORGOT: '/forgot',
+    // ACCOUNT: '/account',
 
     // лекции, урок, словарь, полезные ссылки
     LESSONS: '/lessons',

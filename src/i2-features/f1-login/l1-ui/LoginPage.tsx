@@ -33,7 +33,7 @@ const LoginPage = () => {
         dispatch(LoginActions.setError(''))
     }
 
-    if (redirect) return <Redirect to={PATH.ACCOUNT}/>
+    if (redirect) return <Redirect to={PATH.LESSONS}/>
 
     return (
         <Login send={send} setStatus={setStatusCallback} status={status} error={error}/>
