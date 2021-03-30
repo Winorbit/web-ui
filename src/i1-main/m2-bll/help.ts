@@ -1,4 +1,5 @@
 import {AppStoreType} from './store'
+import {RELEASE} from '../../baseBackURL'
 
 export type PropertiesType<T> = T extends { [key: string]: infer U } ? U : never
 export type InferActionsType<T extends { [key: string]: (...arg: any[]) => any }> = ReturnType<PropertiesType<T>>
@@ -19,6 +20,6 @@ export const tryCatch = async (
         const error = e.response ? e.response.data : (e.message + ', more details in the console')
         setError(error)
 
-        console.log('winter-orbit, ' + info + ' Error!', {...e})
+        !RELEASE && console.log('winter-orbit, ' + info + ' Error!', {...e})
     }
 }

@@ -1,5 +1,5 @@
 import {instance} from '../../../i1-main/m3-dal/instance'
-import {UserType} from '../../f2-account/a1-ui/Account'
+import {UserType} from '../../../i1-main/m2-bll/appReducer'
 
 export type SignInDataType = UserType
 

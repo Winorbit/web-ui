@@ -1,5 +1,13 @@
 import {InferActionsType} from './help'
-import {UserType} from '../../i2-features/f2-account/a1-ui/Account'
+
+export type UserType = {
+    email: string
+    id: number
+    is_superuser: boolean
+    username: string
+    profile_image: undefined
+    user_courses: string[]
+}
 
 const initialState = {
     isAuth: false,

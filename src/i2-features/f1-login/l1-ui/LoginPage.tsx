@@ -6,6 +6,8 @@ import {PATH} from '../../../i1-main/m1-ui/u2-main/Main'
 import {LoginActions, signIn} from '../l2-bll/loginReducer'
 import Login from './Login'
 import {StatusType} from '../../../i0-common/c1-orbitForm/OrbitForm'
+import Footer from '../../../i1-main/m1-ui/u4-footer/Footer'
+import s from './Login.module.css'
 
 const LoginPage = () => {
     const {loading, success, error} = useSelector((state: AppStoreType) => state.login)
@@ -33,10 +35,14 @@ const LoginPage = () => {
         dispatch(LoginActions.setError(''))
     }
 
-    if (redirect) return <Redirect to={PATH.ACCOUNT}/>
+    if (redirect) return <Redirect to={PATH.LESSONS}/>
 
     return (
-        <Login send={send} setStatus={setStatusCallback} status={status} error={error}/>
+        <div className={s.main}>
+            <Login send={send} setStatus={setStatusCallback} status={status} error={error}/>
+
+            <Footer/>
+        </div>
     )
 }
 
