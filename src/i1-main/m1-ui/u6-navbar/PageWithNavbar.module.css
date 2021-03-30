@@ -1,0 +1,116 @@
+.main {
+    display: flex;
+    justify-content: space-between;
+
+    font-family: 'sansation-light', serif;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 70%;
+}
+
+.navbarBlock {
+    display: flex;
+    align-items: center;
+    height: calc(100vh - 69px);
+    width: 350px;
+}
+
+.content {
+    height: calc(100vh - 69px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 69px);
+    width: 285px;
+
+    background: #121212;
+    color: #f9f9f9;
+}
+
+.open {
+    transition-duration: 500ms;
+    transform: translate(0);
+}
+
+.close {
+    transition-duration: 500ms;
+    transform: translate(-285px);
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    padding-left: 55px;
+}
+
+.link {
+    padding-top: 20px;
+
+    text-decoration: none;
+    color: #f9f9f9;
+}
+
+.active {
+}
+
+.active>span {
+    border-bottom: 2px solid #f9f9f9;
+}
+
+.account {
+    border-top: 1px solid #f9f9f9;
+    height: 350px;
+    padding-left: 55px;
+    padding-top: 20px;
+}
+
+.small {
+    padding-top: 10px;
+    padding-bottom: 15px;
+
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 70%;
+}
+
+.discord {
+    color: #0094ff;
+    cursor: pointer;
+}
+
+.button {
+    width: 195px;
+    height: 40px;
+    margin-top: 100px;
+
+    outline: none;
+    border-radius: 5px;
+    background: #f9f9f9;
+    font-size: 24px;
+    line-height: 70%;
+    cursor: pointer;
+}
+
+.logout {
+    text-decoration: none;
+    color: #121212;
+}
+
+.arrow {
+    width: 60px;
+    height: 125px;
+    padding-top: 75px;
+    padding-left: 20px;
+
+    clip-path: polygon(0 0, 100% 25%, 100% 75%, 0% 100%);
+    background: #121212;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
