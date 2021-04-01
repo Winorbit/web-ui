@@ -1,0 +1,29 @@
+.main {
+    display: flex;
+    padding-top: 30px;
+    padding-left: 30px;
+
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 195px;
+    min-height: 195px;
+    max-height: 195px;
+    border-radius: 50%;
+
+    background: #3479ff;
+    color: #f9f9f9;
+}
+
+.line {
+    position: relative;
+    left: -95px;
+    padding-left: 120px;
+    padding-top: 20px;
+
+    border-top: 2px solid #3479ff;
+    border-bottom: 2px solid #3479ff;
+}
