@@ -62,6 +62,11 @@ const LessonPage = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className={s.buttons}>
+                    <button className={s.button}>прошлый урок</button>
+                    <button className={s.button}>следующий урок</button>
+                </div>
             </div>
         </PageWithNavbar>
     )
