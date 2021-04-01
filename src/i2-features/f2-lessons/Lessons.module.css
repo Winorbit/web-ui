@@ -1,3 +1,38 @@
-.x {
+.main {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 
+.lesson {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.iframe {
+    min-width: 645px;
+    height: 278px;
+
+    border-radius: 20px;
+    background: #c4c4c4;
+}
+
+.textBlock {
+    padding-left: 20px;
+}
+
+.title {
+    font-family: 'sansation-light', serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #003257;
+}
+
+.description {
+}
+
+.else {
+    color: #003257;
 }

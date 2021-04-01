@@ -5,6 +5,7 @@ import Header from '../u3-header/Header'
 import LoginPage from '../../../i2-features/f1-login/l1-ui/LoginPage'
 import LoginRedirect from '../u5-login-redirect/LoginRedirect'
 import LessonsPage from '../../../i2-features/f2-lessons/LessonsPage'
+import PageWithNavbar from '../u6-navbar/PageWithNavbar'
 
 export const PATH = {
     HOME: '/',
@@ -31,7 +32,6 @@ const Main = () => {
 
                     <Route path={PATH.LOGIN} exact render={() => <LoginPage/>}/>
                     {/*<Route path={PATH.FORGOT} exact render={() => <Forgot/>}/>*/}
-                    {/*<Route path={PATH.FORGOT + '/:token'} exact render={() => <Forgot/>}/>*/}
 
                     <Route
                         path={PATH.LESSONS}
@@ -46,7 +46,7 @@ const Main = () => {
                     />
 
 
-                    <Route render={() => <div>404</div>}/>
+                    <Route render={() => <PageWithNavbar>404</PageWithNavbar>}/>
                 </Switch>
             </div>
         </div>
