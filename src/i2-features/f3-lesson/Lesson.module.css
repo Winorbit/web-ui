@@ -1,0 +1,39 @@
+.main {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 100px;
+
+}
+
+.iframe {
+    width: 100%;
+    height: 520px;
+
+    border-radius: 20px;
+    background: #c4c4c4;
+}
+
+.textBlock {
+    display: flex;
+}
+
+.title {
+    padding-top: 20px;
+    padding-right: 20px;
+
+    font-family: 'sansation-light', serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #003257;
+}
+
+.description {
+    padding-right: 20px;
+}
+
+.else {
+    padding-right: 20px;
+    color: #003257;
+}

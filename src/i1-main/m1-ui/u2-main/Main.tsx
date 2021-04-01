@@ -6,6 +6,7 @@ import LoginPage from '../../../i2-features/f1-login/l1-ui/LoginPage'
 import LoginRedirect from '../u5-login-redirect/LoginRedirect'
 import LessonsPage from '../../../i2-features/f2-lessons/LessonsPage'
 import PageWithNavbar from '../u6-navbar/PageWithNavbar'
+import LessonPage from '../../../i2-features/f3-lesson/LessonPage'
 
 export const PATH = {
     HOME: '/',
@@ -40,6 +41,17 @@ const Main = () => {
                             <>
                                 <LoginRedirect>
                                     <LessonsPage/>
+                                </LoginRedirect>
+                            </>
+                        )}
+                    />
+                    <Route
+                        path={PATH.LESSON}
+                        exact
+                        render={() => (
+                            <>
+                                <LoginRedirect>
+                                    <LessonPage/>
                                 </LoginRedirect>
                             </>
                         )}
