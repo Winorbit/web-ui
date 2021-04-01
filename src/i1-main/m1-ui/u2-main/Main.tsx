@@ -8,6 +8,7 @@ import LessonsPage from '../../../i2-features/f2-lessons/LessonsPage'
 import PageWithNavbar from '../u6-navbar/PageWithNavbar'
 import LessonPage from '../../../i2-features/f3-lesson/LessonPage'
 import DictionaryPage from '../../../i2-features/f4-dictionary/DictionaryPage'
+import LinksPage from '../../../i2-features/f5-links/LinksPage'
 
 export const PATH = {
     HOME: '/',
@@ -64,6 +65,17 @@ const Main = () => {
                             <>
                                 <LoginRedirect>
                                     <DictionaryPage/>
+                                </LoginRedirect>
+                            </>
+                        )}
+                    />
+                    <Route
+                        path={PATH.LINKS}
+                        exact
+                        render={() => (
+                            <>
+                                <LoginRedirect>
+                                    <LinksPage/>
                                 </LoginRedirect>
                             </>
                         )}

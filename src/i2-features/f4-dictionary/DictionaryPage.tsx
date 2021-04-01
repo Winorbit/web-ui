@@ -2,7 +2,7 @@ import React, {ChangeEvent, useState} from 'react'
 import PageWithNavbar from '../../i1-main/m1-ui/u6-navbar/PageWithNavbar'
 import s from './Dictionary.module.css'
 import find from './../../assets/find.svg'
-import ItemDictionary from "./item/ItemDictionary";
+import ItemDictionary from './item/ItemDictionary'
 
 const DictionaryPage = () => {
     const [word, setWord] = useState('')
@@ -18,7 +18,7 @@ const DictionaryPage = () => {
         {name: 'bcd'},
         {name: 'abcd'},
         {name: 'cd'},
-    ].filter(c => new RegExp(wordF, 'ig').test(c.name)).map(l => (<ItemDictionary data={l}/>))
+    ].filter(c => new RegExp(wordF, 'ig').test(c.name)).map(l => (<ItemDictionary data={l} key={l.name}/>))
 
     return (
         <PageWithNavbar>
