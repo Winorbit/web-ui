@@ -1,0 +1,26 @@
+.main {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.block {
+    margin-top: 20px;
+    margin-right: 100px;
+    margin-left: 20px;
+    padding: 5px;
+
+    background: #E9E9E9;
+    border-radius: 8px;
+    font-family: 'sansation-light', serif;
+    font-weight: bold;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 16px;
+    color: #0A2568;
+}
+
+.text {
+    font-size: 24px;
+}

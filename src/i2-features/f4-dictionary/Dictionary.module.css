@@ -1,0 +1,49 @@
+.main {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 30px;
+    padding-left: 30px;
+
+}
+
+.find {
+    display: flex;
+    justify-content: center;
+}
+
+.img {
+    position: relative;
+    left: 30px;
+    top: 5px;
+}
+
+.input {
+    width: 310px;
+    height: 44px;
+    padding-left: 40px;
+
+    outline: none;
+    border-radius: 55px;
+    background: #121212;
+    color: #f9f9f9;
+}
+
+.line {
+    position: relative;
+    left: -22px;
+    width: 100px;
+
+    border-top: 1px solid #121212;
+    border-bottom: 2px solid #838383;
+
+}
+
+.button {
+    position: relative;
+    left: -22px;
+    width: 83px;
+
+    outline: none;
+    background: #121212;
+    color: #f9f9f9;
+}

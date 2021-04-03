@@ -1,10 +1,10 @@
 import React from 'react'
 import PageWithNavbar from '../../i1-main/m1-ui/u6-navbar/PageWithNavbar'
-import Lesson from './lesson/Lesson'
-import s from './Lessons.module.css'
+import s from './Links.module.css'
+import Link from './link/Link'
 
-const LessonsPage = () => {
-    const content = [1, 2, 3, 4].map(l => (<Lesson key={l}/>))
+const LinksPage = () => {
+    const content = [1, 2, 3, 4].map(l => (<Link key={l}/>))
 
     return (
         <PageWithNavbar>
@@ -15,4 +15,4 @@ const LessonsPage = () => {
     )
 }
 
-export default LessonsPage
+export default LinksPage
