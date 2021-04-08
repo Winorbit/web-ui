@@ -17,6 +17,7 @@ const Lesson: React.FC<LessonPropsType> = ({data}) => {
     return (
         <div className={s.lesson}>
             <iframe
+                title={'les' + (data || 0)}
                 src="https://www.youtube.com/embed/XP59NBDhXFA"
                 className={s.iframe}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

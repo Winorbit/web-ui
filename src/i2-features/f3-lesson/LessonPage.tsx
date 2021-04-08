@@ -11,6 +11,7 @@ const LessonPage = () => {
         <PageWithNavbar>
             <div className={s.main}>
                 <iframe
+                    title={'lesson'}
                     src="https://www.youtube.com/embed/XP59NBDhXFA"
                     className={s.iframe}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

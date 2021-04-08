@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './PageWithNavbar.module.css'
 import {NavLink} from 'react-router-dom'
 import {PATH} from '../u2-main/Main'
@@ -6,17 +6,26 @@ import {useDispatch, useSelector} from 'react-redux'
 import {AppStoreType} from '../../m2-bll/store'
 import {AppActions} from '../../m2-bll/appReducer'
 import arrow from './../../../assets/arrow.svg'
+import {instance} from "../../m3-dal/instance";
 
 type PageWithNavbarPropsType = {}
 
 const PageWithNavbar: React.FC<PageWithNavbarPropsType> = ({children}) => {
     const [isOpen, setOpen] = useState(true)
     const {data, lesson} = useSelector((store: AppStoreType) => store.app) || {}
+    const [group, setGroup] = useState<{title: string, discord_chat_link: string}>()
 
     const dispatch = useDispatch()
     const logout = () => {
         dispatch(AppActions.setIsAuth(false))
     }
+
+    useEffect(() => {
+        const id = data && data.groups ? data.groups[0] : 0
+        instance.get('groups/' + id + '/').then(res => {
+            setGroup(res.data)
+        })
+    }, [data])
 
     return (
         <div className={s.main}>
@@ -44,9 +53,15 @@ const PageWithNavbar: React.FC<PageWithNavbarPropsType> = ({children}) => {
                             <div>Студент:</div>
                             <div className={s.small}>{data?.username}</div>
                             <div>Группа:</div>
-                            <div className={s.small}>{data?.groups?.join(', ')}</div>
+                            <div className={s.small}>{group?.title}</div>
                             <div>Чат группы:</div>
-                            <div className={s.small}>Discord - <span className={s.discord}>ссылка</span></div>
+                            <div className={s.small}>Discord - <a
+                                className={s.discord}
+                                href={group?.discord_chat_link}
+                                target={'_blank'}
+                                rel="nofollow noreferrer noopener"
+
+                            >ссылка</a></div>
 
                             <NavLink to={PATH.LOGIN} className={s.logout} onClick={logout}>
                                 <button className={s.button}>выйти</button>
