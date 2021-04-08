@@ -81,6 +81,7 @@
 }
 
 .discord {
+    text-decoration: none;
     color: #0094ff;
     cursor: pointer;
 }
