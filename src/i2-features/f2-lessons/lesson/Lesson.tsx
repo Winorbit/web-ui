@@ -1,11 +1,19 @@
 import React from 'react'
 import s from './../Lessons.module.css'
+import { NavLink } from 'react-router-dom'
+import {PATH} from '../../../i1-main/m1-ui/u2-main/Main'
+import {useDispatch} from 'react-redux'
+import {AppActions} from '../../../i1-main/m2-bll/appReducer'
 
 type LessonPropsType = {
-    data?: {}
+    data?: number
+    // data?: {}
 }
 
 const Lesson: React.FC<LessonPropsType> = ({data}) => {
+    const dispatch = useDispatch()
+    const click = () => dispatch(AppActions.setLesson((data || 0).toString()))
+
     return (
         <div className={s.lesson}>
             <iframe
@@ -16,9 +24,9 @@ const Lesson: React.FC<LessonPropsType> = ({data}) => {
             />
 
             <div className={s.textBlock}>
-                <div className={s.title}>
-                    ВВЕДЕНИЕ В ПРОГРАММИРОВАНИЕ
-                </div>
+                <NavLink className={s.title} to={PATH.LESSON + '/' + data} onClick={click}>
+                    ВВЕДЕНИЕ В ПРОГРАММИРОВАНИЕ {data}
+                </NavLink>
 
                 <div className={s.description}>
                     Изучаем основы основ, самые базовые вещи о программировании и о языке Python. Учимся пользоваться

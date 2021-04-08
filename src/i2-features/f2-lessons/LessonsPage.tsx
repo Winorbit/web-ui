@@ -4,7 +4,7 @@ import Lesson from './lesson/Lesson'
 import s from './Lessons.module.css'
 
 const LessonsPage = () => {
-    const content = [1, 2, 3, 4].map(l => (<Lesson key={l}/>))
+    const content = [1, 2, 3, 4].map(l => (<Lesson key={l} data={l}/>))
 
     return (
         <PageWithNavbar>

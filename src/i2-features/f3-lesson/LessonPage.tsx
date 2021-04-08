@@ -1,8 +1,12 @@
 import React from 'react'
 import PageWithNavbar from '../../i1-main/m1-ui/u6-navbar/PageWithNavbar'
 import s from './Lesson.module.css'
+import {useSelector} from 'react-redux'
+import {AppStoreType} from '../../i1-main/m2-bll/store'
 
 const LessonPage = () => {
+    const {lesson} = useSelector((state: AppStoreType) => state.app)
+
     return (
         <PageWithNavbar>
             <div className={s.main}>
@@ -17,7 +21,7 @@ const LessonPage = () => {
                     <div>
                         <div>
                             <div className={s.title}>
-                                Введение в программирование
+                                Введение в программирование {lesson}
                             </div>
 
                             <div className={s.description}>

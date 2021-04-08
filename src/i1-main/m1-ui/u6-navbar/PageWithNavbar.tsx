@@ -11,7 +11,7 @@ type PageWithNavbarPropsType = {}
 
 const PageWithNavbar: React.FC<PageWithNavbarPropsType> = ({children}) => {
     const [isOpen, setOpen] = useState(true)
-    const {username} = useSelector((store: AppStoreType) => store.app.data) || {}
+    const {data, lesson} = useSelector((store: AppStoreType) => store.app) || {}
 
     const dispatch = useDispatch()
     const logout = () => {
@@ -27,22 +27,24 @@ const PageWithNavbar: React.FC<PageWithNavbarPropsType> = ({children}) => {
                             <NavLink to={PATH.LESSONS} className={s.link} activeClassName={s.active}>
                                 <span>Лекции</span>
                             </NavLink>
-                            <NavLink to={PATH.LESSON} className={s.link} activeClassName={s.active}>
-                                <span>Страница урока</span>
-                            </NavLink>
+                            {lesson && (
+                                <NavLink to={PATH.LESSON + '/' + lesson} className={s.link} activeClassName={s.active}>
+                                    <span>Страница урока</span>
+                                </NavLink>
+                            )}
                             <NavLink to={PATH.DICTIONARY} className={s.link} activeClassName={s.active}>
                                 <span>Словарь</span>
                             </NavLink>
-                            <NavLink to={PATH.LINKS} className={s.link} activeClassName={s.active}>
-                                <span>Полезные ссылки</span>
-                            </NavLink>
+                            {/*<NavLink to={PATH.LINKS} className={s.link} activeClassName={s.active}>*/}
+                            {/*    <span>Полезные ссылки</span>*/}
+                            {/*</NavLink>*/}
                         </div>
 
                         <div className={s.account}>
                             <div>Студент:</div>
-                            <div className={s.small}>{username}</div>
+                            <div className={s.small}>{data?.username}</div>
                             <div>Группа:</div>
-                            <div className={s.small}>00001PONL</div>
+                            <div className={s.small}>{data?.groups?.join(', ')}</div>
                             <div>Чат группы:</div>
                             <div className={s.small}>Discord - <span className={s.discord}>ссылка</span></div>
 
