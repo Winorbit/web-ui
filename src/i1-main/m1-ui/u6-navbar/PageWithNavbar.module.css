@@ -1,12 +1,14 @@
 .main {
     display: flex;
     justify-content: space-between;
+    align-items: stretch;
+    min-height: calc(100vh - 69px);
 }
 
 .navbarBlock {
     display: flex;
     align-items: center;
-    height: calc(100vh - 69px);
+    height: 100%;
     width: 350px;
 
     font-family: 'sansation-light', serif;
@@ -17,7 +19,6 @@
 
 .content {
     height: calc(100vh - 69px);
-    width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -26,7 +27,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100vh - 69px);
+    height: 100%;
     width: 285px;
 
     background: #121212;
@@ -66,7 +67,7 @@
 
 .account {
     border-top: 1px solid #f9f9f9;
-    height: 350px;
+    height: 280px;
     padding-left: 55px;
     padding-top: 20px;
 }
@@ -81,6 +82,7 @@
 }
 
 .discord {
+    text-decoration: none;
     color: #0094ff;
     cursor: pointer;
 }
@@ -88,7 +90,7 @@
 .button {
     width: 195px;
     height: 40px;
-    margin-top: 100px;
+    margin-top: 30px;
 
     outline: none;
     border-radius: 5px;

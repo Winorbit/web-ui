@@ -24,6 +24,7 @@
 }
 
 .title {
+    text-decoration: none;
     font-family: 'sansation-light', serif;
     font-weight: bold;
     font-size: 24px;
@@ -31,6 +32,13 @@
 }
 
 .description {
+}
+
+.des {
+    max-height: 230px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .else {

@@ -7,11 +7,13 @@ export type UserType = {
     username: string
     profile_image: undefined
     user_courses: string[]
+    groups?: string[]
 }
 
 const initialState = {
     isAuth: false,
-    data: undefined as UserType | undefined
+    data: undefined as UserType | undefined,
+    lesson: undefined as string | undefined,
 }
 
 export const appReducer = (
@@ -32,6 +34,12 @@ export const appReducer = (
                 data: action.data,
             }
         }
+        case 'app/SET_LESSON': {
+            return {
+                ...state,
+                lesson: action.id,
+            }
+        }
 
         default: {
             return state
@@ -50,6 +58,10 @@ export const AppActions = {
     updateUser: (data?: UserType) => ({
         type: 'app/UPDATE_USER',
         data,
+    } as const),
+    setLesson: (id: string) => ({
+        type: 'app/SET_LESSON',
+        id,
     } as const),
 
 }

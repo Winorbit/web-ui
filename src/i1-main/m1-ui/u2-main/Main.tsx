@@ -8,7 +8,7 @@ import LessonsPage from '../../../i2-features/f2-lessons/LessonsPage'
 import PageWithNavbar from '../u6-navbar/PageWithNavbar'
 import LessonPage from '../../../i2-features/f3-lesson/LessonPage'
 import DictionaryPage from '../../../i2-features/f4-dictionary/DictionaryPage'
-import LinksPage from '../../../i2-features/f5-links/LinksPage'
+// import LinksPage from '../../../i2-features/f5-links/LinksPage'
 
 export const PATH = {
     HOME: '/',
@@ -48,7 +48,7 @@ const Main = () => {
                         )}
                     />
                     <Route
-                        path={PATH.LESSON}
+                        path={PATH.LESSON + '/:id'}
                         exact
                         render={() => (
                             <>
@@ -69,17 +69,17 @@ const Main = () => {
                             </>
                         )}
                     />
-                    <Route
-                        path={PATH.LINKS}
-                        exact
-                        render={() => (
-                            <>
-                                <LoginRedirect>
-                                    <LinksPage/>
-                                </LoginRedirect>
-                            </>
-                        )}
-                    />
+                    {/*<Route*/}
+                    {/*    path={PATH.LINKS}*/}
+                    {/*    exact*/}
+                    {/*    render={() => (*/}
+                    {/*        <>*/}
+                    {/*            <LoginRedirect>*/}
+                    {/*                <LinksPage/>*/}
+                    {/*            </LoginRedirect>*/}
+                    {/*        </>*/}
+                    {/*    )}*/}
+                    {/*/>*/}
 
 
                     <Route render={() => <PageWithNavbar>404</PageWithNavbar>}/>

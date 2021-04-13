@@ -17,11 +17,11 @@ const Header: React.FC<HeaderPropsType> = () => {
         <div className={s.header}>
             <div style={{width: 210, height: 30}}/>
 
-            <div className={s.center}>
+            <NavLink className={s.center} to={PATH.LESSONS}>
                 <div className={s.text}>зимняя</div>
                 <img src={newLogo} alt={'logo'}/>
                 <div className={s.text}>орбита</div>
-            </div>
+            </NavLink>
 
             <div className={s.person}>
                 {!isAuth
