@@ -78,11 +78,9 @@ const LessonPage = () => {
                         Домашнее задание:
                     </div>
 
-                    {!col1 && (
-                        <div className={s.description}>
-                            ??? ссылка на дз или текст его описывающий
-                        </div>
-                    )}
+                    <div className={!col1 ? s.description : s.hidden}>
+                        ??? ссылка на дз или текст его описывающий
+                    </div>
                 </div>
 
                 <div className={col2 ? s.collapsed : s.uncollapsed}>
@@ -96,14 +94,12 @@ const LessonPage = () => {
                         Полезные ссылки:
                     </div>
 
-                    {!col2 && (
-                        <div
-                            className={s.description}
-                            dangerouslySetInnerHTML={{__html: lessonData?.lesson_usefull_links || ''}}
-                        >
-                            {/*ссылки и их описание*/}
-                        </div>
-                    )}
+                    <div
+                        className={!col2 ? s.description : s.hidden}
+                        dangerouslySetInnerHTML={{__html: lessonData?.lesson_usefull_links || ''}}
+                    >
+                        {/*ссылки и их описание*/}
+                    </div>
                 </div>
 
                 <div className={s.buttons}>

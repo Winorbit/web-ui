@@ -34,6 +34,13 @@
 
 .description {
     padding-right: 20px;
+    transition-duration: 500ms;
+}
+
+.hidden {
+    height: 0;
+    overflow: hidden;
+    transition-duration: 500ms;
 }
 
 .collapsed {
@@ -45,6 +52,7 @@
     border-radius: 12px;
     border: 1px dashed #6a6a6a;
     background: #ffffff;
+    /*transition-duration: 500ms;*/
 }
 
 .uncollapsed {
@@ -56,6 +64,7 @@
     border-radius: 12px;
     border: 1px dashed #6a6a6a;
     background: #ffffff;
+    /*transition-duration: 500ms;*/
 }
 
 .click {
