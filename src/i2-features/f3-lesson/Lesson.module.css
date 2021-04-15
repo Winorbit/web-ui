@@ -4,7 +4,6 @@
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 100px;
-
 }
 
 .iframe {
@@ -17,10 +16,14 @@
 
 .textBlock {
     display: flex;
+    padding-top: 20px;
+}
+
+.xxx {
+    width: 50%;
 }
 
 .title {
-    padding-top: 20px;
     padding-right: 20px;
 
     font-family: 'sansation-light', serif;
@@ -33,9 +36,31 @@
     padding-right: 20px;
 }
 
-.else {
-    padding-right: 20px;
-    color: #003257;
+.collapsed {
+    position: relative;
+    margin-top: 20px;
+    width: calc(50% - 38px);
+    padding: 8px;
+
+    border-radius: 12px;
+    border: 1px dashed #6a6a6a;
+    background: #ffffff;
+}
+
+.uncollapsed {
+    position: relative;
+    margin-top: 20px;
+    width: calc(100% - 38px);
+    padding: 8px;
+
+    border-radius: 12px;
+    border: 1px dashed #6a6a6a;
+    background: #ffffff;
+}
+
+.click {
+    position: absolute;
+    right: 8px;
 }
 
 .buttons {

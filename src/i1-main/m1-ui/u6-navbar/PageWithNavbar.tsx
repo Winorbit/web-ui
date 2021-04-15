@@ -37,15 +37,18 @@ const PageWithNavbar: React.FC<PageWithNavbarPropsType> = ({children}) => {
                                 <NavLink to={PATH.LESSONS} className={s.link} activeClassName={s.active}>
                                     <span>Лекции</span>
                                 </NavLink>
+
+                                <NavLink to={PATH.DICTIONARY} className={s.link} activeClassName={s.active}>
+                                    <span>Словарь</span>
+                                </NavLink>
+
                                 {lesson && (
                                     <NavLink to={PATH.LESSON + '/' + lesson} className={s.link}
                                              activeClassName={s.active}>
                                         <span>Страница урока</span>
                                     </NavLink>
                                 )}
-                                <NavLink to={PATH.DICTIONARY} className={s.link} activeClassName={s.active}>
-                                    <span>Словарь</span>
-                                </NavLink>
+
                                 {/*<NavLink to={PATH.LINKS} className={s.link} activeClassName={s.active}>*/}
                                 {/*    <span>Полезные ссылки</span>*/}
                                 {/*</NavLink>*/}

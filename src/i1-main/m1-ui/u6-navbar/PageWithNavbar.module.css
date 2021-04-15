@@ -21,6 +21,8 @@
     height: calc(100vh - 69px);
     overflow-x: hidden;
     overflow-y: auto;
+
+    background: #f9f9f9;
 }
 
 .navbar {
