@@ -65,14 +65,15 @@ const PageWithNavbar: React.FC<PageWithNavbarPropsType> = ({children}) => {
 
                             <div className={s.account}>
                                 <div>
-                                    <div>Студент:</div>
+                                    <div className={s.big}>Студент:</div>
                                     <div className={s.small}>{data?.username}</div>
-                                    <div>Группы:</div>
+                                    <br/>
+                                    <div className={s.big}>Группы:</div>
 
                                     {groups.map(g => (
                                         <div className={s.group}>
                                             <div className={s.small}>{g.title}</div>
-                                            <div>основной чат:</div>
+                                            <div className={s.big}>основной чат:</div>
                                             <div className={s.small}>Discord - <a
                                                 className={s.discord}
                                                 href={g.discord_chat_link}

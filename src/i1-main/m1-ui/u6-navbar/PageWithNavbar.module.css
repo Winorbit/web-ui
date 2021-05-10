@@ -32,7 +32,7 @@
     height: 100%;
     width: 285px;
 
-    background: #121212;
+    background: #2f2f2f;
     color: #f9f9f9;
 }
 
@@ -79,6 +79,8 @@
 }
 
 .group {
+    width: 190px;
+    height: 70px;
     margin-top: 6px;
     margin-right: 30px;
     padding: 3px;
@@ -88,12 +90,17 @@
 }
 
 .small {
-    padding-top: 10px;
-    padding-bottom: 15px;
+    padding-top: 2px;
+    padding-bottom: 5px;
 
     font-weight: normal;
     font-size: 24px;
     line-height: 70%;
+}
+
+.big {
+    padding-top: 2px;
+    padding-bottom: 7px;
 }
 
 .discord {
@@ -132,7 +139,7 @@
     padding-left: 20px;
 
     clip-path: polygon(0 0, 100% 25%, 100% 75%, 0% 100%);
-    background: #121212;
+    background: #2f2f2f;
 }
 
 .rotate {
