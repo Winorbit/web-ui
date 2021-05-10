@@ -74,7 +74,7 @@ const LessonPage = () => {
                         <img src={cross} alt={'cross'} className={s.click} onClick={() => setCol1(!col1)}/>
                     )}
 
-                    <div className={s.title}>
+                    <div className={s.titleCli} onClick={() => setCol1(!col1)}>
                         Домашнее задание:
                     </div>
 
@@ -90,7 +90,7 @@ const LessonPage = () => {
                         <img src={cross} alt={'cross'} className={s.click} onClick={() => setCol2(!col2)}/>
                     )}
 
-                    <div className={s.title}>
+                    <div className={s.titleCli} onClick={() => setCol2(!col2)}>
                         Полезные ссылки:
                     </div>
 

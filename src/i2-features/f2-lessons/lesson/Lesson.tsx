@@ -2,15 +2,17 @@ import React from 'react'
 import s from './../Lessons.module.css'
 import { NavLink } from 'react-router-dom'
 import {PATH} from '../../../i1-main/m1-ui/u2-main/Main'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {AppActions} from '../../../i1-main/m2-bll/appReducer'
 import {LessonType} from '../LessonsPage'
+import {AppStoreType} from "../../../i1-main/m2-bll/store";
 
 type LessonPropsType = {
     data: LessonType
 }
 
 const Lesson: React.FC<LessonPropsType> = ({data}) => {
+    const {lesson} = useSelector((state: AppStoreType) => state.app)
     const dispatch = useDispatch()
     const click = () => dispatch(AppActions.setLesson((data.id).toString()))
     const src = data.source_link.replace('watch?v=', 'embed/')
@@ -27,7 +29,11 @@ const Lesson: React.FC<LessonPropsType> = ({data}) => {
             />
 
             <div className={s.textBlock}>
-                <NavLink className={s.title} to={PATH.LESSON + '/' + data.id} onClick={click}>
+                <NavLink
+                    className={(lesson && +lesson === data.id) ? s.checked : s.title}
+                    to={PATH.LESSON + '/' + data.id}
+                    onClick={click}
+                >
                     {/*ВВЕДЕНИЕ В ПРОГРАММИРОВАНИЕ*/}
                     {data.title}
                 </NavLink>

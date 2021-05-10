@@ -32,6 +32,20 @@
     color: #003257;
 }
 
+.titleCli {
+    padding-right: 20px;
+
+    font-family: 'sansation-light', serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #003257;
+}
+
+.titleCli:hover {
+    color: #000257;
+    cursor: pointer;
+}
+
 .description {
     padding-right: 20px;
     transition-duration: 500ms;
@@ -70,6 +84,7 @@
 .click {
     position: absolute;
     right: 8px;
+    cursor: pointer;
 }
 
 .buttons {
@@ -88,4 +103,9 @@
     border-radius: 4px;
     background: #121212;
     color: #f9f9f9;
+}
+
+.button:hover {
+    background: #2f2f2f;
+    cursor: pointer;
 }
