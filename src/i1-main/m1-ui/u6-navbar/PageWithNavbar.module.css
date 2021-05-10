@@ -61,7 +61,36 @@
     color: #f9f9f9;
 }
 
-.active {
+.link:hover>span {
+    border-bottom: 2px solid #f9f9f9;
+}
+
+.link::before {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 220px;
+    right: 100px;
+    margin-top: 21px;
+
+    background: #2f2f2f;
+    transition: all 0.5s;
+}
+
+.link:hover::before {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 2px;
+    right: 100px;
+    margin-top: 21px;
+
+    background: #2f2f2f;
+    transition: all 0.5s;
+}
+
+.link.active::before {
+    width: 2px;
 }
 
 .active>span {
