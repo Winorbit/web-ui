@@ -5,11 +5,15 @@ import {useSelector} from 'react-redux'
 import {AppStoreType} from '../../i1-main/m2-bll/store'
 import {instance} from "../../i1-main/m3-dal/instance";
 import {LessonType} from '../f2-lessons/LessonsPage'
+import down from './../../assets/down.svg'
+import cross from './../../assets/cross.svg'
 
 const LessonPage = () => {
     const {lesson} = useSelector((state: AppStoreType) => state.app)
 
     const [lessonData, setLesson] = useState<LessonType>()
+    const [col1, setCol1] = useState(true)
+    const [col2, setCol2] = useState(true)
 
     useEffect(() => {
         instance.get<LessonType>('lessons/' + lesson + '/').then(res => {
@@ -31,49 +35,24 @@ const LessonPage = () => {
                 />
 
                 <div className={s.textBlock}>
-                    <div>
-                        <div>
-                            <div className={s.title}>
-                                {/*Введение в программирование {lesson}*/}
-                                {lessonData?.title}
-                            </div>
-
-                            <div
-                                className={s.description}
-                                dangerouslySetInnerHTML={{__html: lessonData?.lesson_description || ''}}
-                            >
-                                {/*Изучаем основы основ, самые базовые вещи о программировании и о языке Python. Учимся*/}
-                                {/*пользоваться основным инструментарием и задаем себе базу для всего дальнейшего обучения.*/}
-                                {/*Знакомимся с теми кирпичиками, из которых и собирается программы абсолютно любой*/}
-                                {/*сложности.*/}
-                            </div>
+                    <div className={s.xxx}>
+                        <div className={s.title}>
+                            {/*Введение в программирование {lesson}*/}
+                            {lessonData?.title}
                         </div>
 
-                        <div>
-                            <div className={s.title}>
-                                Домашнее задание:
-                            </div>
-
-                            <div className={s.description}>
-                                ??? ссылка на дз или текст его описывающий
-                            </div>
-                        </div>
-
-                        <div>
-                            <div className={s.title}>
-                                Полезные ссылки:
-                            </div>
-
-                            <div
-                                className={s.else}
-                                dangerouslySetInnerHTML={{__html: lessonData?.lesson_usefull_links || ''}}
-                            >
-                                {/*ссылки и их описание*/}
-                            </div>
+                        <div
+                            className={s.description}
+                            dangerouslySetInnerHTML={{__html: lessonData?.lesson_description || ''}}
+                        >
+                            {/*Изучаем основы основ, самые базовые вещи о программировании и о языке Python. Учимся*/}
+                            {/*пользоваться основным инструментарием и задаем себе базу для всего дальнейшего обучения.*/}
+                            {/*Знакомимся с теми кирпичиками, из которых и собирается программы абсолютно любой*/}
+                            {/*сложности.*/}
                         </div>
                     </div>
 
-                    <div>
+                    <div className={s.xxx}>
                         <div className={s.title}>
                             Что мы изучим:
                         </div>
@@ -85,6 +64,41 @@ const LessonPage = () => {
                             запустить и увидеть результат выполнения вашей программы.
                             - Научимся работать с базовыми элементами Python.
                         </div>
+                    </div>
+                </div>
+
+                <div className={col1 ? s.collapsed : s.uncollapsed}>
+                    {col1 ? (
+                        <img src={down} alt={'down'} className={s.click} onClick={() => setCol1(!col1)}/>
+                    ) : (
+                        <img src={cross} alt={'cross'} className={s.click} onClick={() => setCol1(!col1)}/>
+                    )}
+
+                    <div className={s.titleCli} onClick={() => setCol1(!col1)}>
+                        Домашнее задание:
+                    </div>
+
+                    <div className={!col1 ? s.description : s.hidden}>
+                        ??? ссылка на дз или текст его описывающий
+                    </div>
+                </div>
+
+                <div className={col2 ? s.collapsed : s.uncollapsed}>
+                    {col2 ? (
+                        <img src={down} alt={'down'} className={s.click} onClick={() => setCol2(!col2)}/>
+                    ) : (
+                        <img src={cross} alt={'cross'} className={s.click} onClick={() => setCol2(!col2)}/>
+                    )}
+
+                    <div className={s.titleCli} onClick={() => setCol2(!col2)}>
+                        Полезные ссылки:
+                    </div>
+
+                    <div
+                        className={!col2 ? s.description : s.hidden}
+                        dangerouslySetInnerHTML={{__html: lessonData?.lesson_usefull_links || ''}}
+                    >
+                        {/*ссылки и их описание*/}
                     </div>
                 </div>
 

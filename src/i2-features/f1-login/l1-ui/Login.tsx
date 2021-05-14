@@ -15,8 +15,8 @@ type LoginPropsType = {
 }
 
 const Login: React.FC<LoginPropsType> = ({status, error, setStatus, send}) => {
-    const [login, setLogin] = useState<string>(RELEASE ? '' : 'me@gmail.com')
-    const [pass, setPass] = useState<string>(RELEASE ? '' : '1234567q')
+    const [login, setLogin] = useState<string>(RELEASE ? '' : 'testuser@gmail.com')
+    const [pass, setPass] = useState<string>(RELEASE ? '' : 'gi23#^3')
 
     const onChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
         setLogin(e.currentTarget.value)

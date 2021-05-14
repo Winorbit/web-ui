@@ -8,12 +8,18 @@ import {AppActions} from '../../m2-bll/appReducer'
 import arrow from './../../../assets/arrow.svg'
 import {instance} from "../../m3-dal/instance";
 
+export type GroupType = {
+    id: number
+    title: string
+    discord_chat_link: string
+}
+
 type PageWithNavbarPropsType = {}
 
 const PageWithNavbar: React.FC<PageWithNavbarPropsType> = ({children}) => {
     const [isOpen, setOpen] = useState(true)
     const {data, lesson} = useSelector((store: AppStoreType) => store.app) || {}
-    const [group, setGroup] = useState<{ title: string, discord_chat_link: string }>()
+    const [groups, setGroups] = useState<GroupType[]>([])
 
     const dispatch = useDispatch()
     const logout = () => {
@@ -21,9 +27,12 @@ const PageWithNavbar: React.FC<PageWithNavbarPropsType> = ({children}) => {
     }
 
     useEffect(() => {
-        const id = data && data.groups ? data.groups[0] : 0
-        instance.get('groups/' + id + '/').then(res => {
-            setGroup(res.data)
+        const ids = data && data.groups ? data.groups : []
+        instance.get<{ results: GroupType[] }>('groups/').then(res => {
+            setGroups(
+                res.data.results
+                    // .filter(g => !!ids.find(i => +i === g.id))
+            )
         })
     }, [data])
 
@@ -37,33 +46,43 @@ const PageWithNavbar: React.FC<PageWithNavbarPropsType> = ({children}) => {
                                 <NavLink to={PATH.LESSONS} className={s.link} activeClassName={s.active}>
                                     <span>Лекции</span>
                                 </NavLink>
+
+                                <NavLink to={PATH.DICTIONARY} className={s.link} activeClassName={s.active}>
+                                    <span>Словарь</span>
+                                </NavLink>
+
                                 {lesson && (
                                     <NavLink to={PATH.LESSON + '/' + lesson} className={s.link}
                                              activeClassName={s.active}>
                                         <span>Страница урока</span>
                                     </NavLink>
                                 )}
-                                <NavLink to={PATH.DICTIONARY} className={s.link} activeClassName={s.active}>
-                                    <span>Словарь</span>
-                                </NavLink>
+
                                 {/*<NavLink to={PATH.LINKS} className={s.link} activeClassName={s.active}>*/}
                                 {/*    <span>Полезные ссылки</span>*/}
                                 {/*</NavLink>*/}
                             </div>
 
                             <div className={s.account}>
-                                <div>Студент:</div>
-                                <div className={s.small}>{data?.username}</div>
-                                <div>Группа:</div>
-                                <div className={s.small}>{group?.title}</div>
-                                <div>Чат группы:</div>
-                                <div className={s.small}>Discord - <a
-                                    className={s.discord}
-                                    href={group?.discord_chat_link}
-                                    target={'_blank'}
-                                    rel="nofollow noreferrer noopener"
+                                <div>
+                                    <div className={s.big}>Студент:</div>
+                                    <div className={s.small}>{data?.username}</div>
+                                    <br/>
+                                    <div className={s.big}>Группы:</div>
 
-                                >ссылка</a></div>
+                                    {groups.map(g => (
+                                        <div className={s.group}>
+                                            <div className={s.small}>{g.title}</div>
+                                            <div className={s.big}>основной чат:</div>
+                                            <div className={s.small}>Discord - <a
+                                                className={s.discord}
+                                                href={g.discord_chat_link}
+                                                target={'_blank'}
+                                                rel="nofollow noreferrer noopener"
+                                            >ссылка</a></div>
+                                        </div>
+                                    ))}
+                                </div>
 
                                 <NavLink to={PATH.LOGIN} className={s.logout} onClick={logout}>
                                     <button className={s.button}>выйти</button>
@@ -77,7 +96,7 @@ const PageWithNavbar: React.FC<PageWithNavbarPropsType> = ({children}) => {
                     </div>
                 </div>
 
-                <div>
+                <div style={{width: '100%'}}>
                     {children}
                 </div>
             </div>

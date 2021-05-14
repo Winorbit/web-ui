@@ -4,7 +4,6 @@
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 100px;
-
 }
 
 .iframe {
@@ -17,10 +16,14 @@
 
 .textBlock {
     display: flex;
+    padding-top: 20px;
+}
+
+.xxx {
+    width: 50%;
 }
 
 .title {
-    padding-top: 20px;
     padding-right: 20px;
 
     font-family: 'sansation-light', serif;
@@ -29,13 +32,59 @@
     color: #003257;
 }
 
-.description {
+.titleCli {
     padding-right: 20px;
+
+    font-family: 'sansation-light', serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #003257;
 }
 
-.else {
+.titleCli:hover {
+    color: #000257;
+    cursor: pointer;
+}
+
+.description {
     padding-right: 20px;
-    color: #003257;
+    transition-duration: 500ms;
+}
+
+.hidden {
+    height: 0;
+    overflow: hidden;
+    transition-duration: 500ms;
+}
+
+.collapsed {
+    position: relative;
+    margin-top: 20px;
+    width: calc(50% - 38px);
+    padding: 8px;
+
+    border-radius: 12px;
+    border: 1px dashed #6a6a6a;
+    background: #ffffff;
+    /*transition-duration: 500ms;*/
+}
+
+.uncollapsed {
+    position: relative;
+    margin-top: 20px;
+    width: calc(100% - 38px);
+    padding: 8px;
+
+    border-radius: 12px;
+    border: 1px dashed #6a6a6a;
+    background: #ffffff;
+    /*transition-duration: 500ms;*/
+}
+
+.click {
+    position: absolute;
+    right: 8px;
+    cursor: pointer;
 }
 
 .buttons {
@@ -54,4 +103,9 @@
     border-radius: 4px;
     background: #121212;
     color: #f9f9f9;
+}
+
+.button:hover {
+    background: #2f2f2f;
+    cursor: pointer;
 }
