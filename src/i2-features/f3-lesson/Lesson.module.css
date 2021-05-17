@@ -109,3 +109,8 @@
     background: #2f2f2f;
     cursor: pointer;
 }
+
+.button:disabled {
+    background: #6a6a6a;
+    cursor: not-allowed;
+}
