@@ -31,7 +31,7 @@ const PageWithNavbar: React.FC<PageWithNavbarPropsType> = ({children}) => {
         instance.get<{ results: GroupType[] }>('groups/').then(res => {
             setGroups(
                 res.data.results
-                    // .filter(g => !!ids.find(i => +i === g.id))
+                    .filter(g => !!ids.find(i => +i === g.id))
             )
         })
     }, [data])

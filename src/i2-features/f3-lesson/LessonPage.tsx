@@ -1,25 +1,48 @@
 import React, {useEffect, useState} from 'react'
 import PageWithNavbar from '../../i1-main/m1-ui/u6-navbar/PageWithNavbar'
 import s from './Lesson.module.css'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {AppStoreType} from '../../i1-main/m2-bll/store'
 import {instance} from "../../i1-main/m3-dal/instance";
 import {LessonType} from '../f2-lessons/LessonsPage'
 import down from './../../assets/down.svg'
 import cross from './../../assets/cross.svg'
+import {NavLink, useParams} from 'react-router-dom'
+import {PATH} from "../../i1-main/m1-ui/u2-main/Main";
+import {AppActions} from "../../i1-main/m2-bll/appReducer";
 
 const LessonPage = () => {
     const {lesson} = useSelector((state: AppStoreType) => state.app)
+    const {id} = useParams()
 
     const [lessonData, setLesson] = useState<LessonType>()
     const [col1, setCol1] = useState(true)
     const [col2, setCol2] = useState(true)
 
     useEffect(() => {
-        instance.get<LessonType>('lessons/' + lesson + '/').then(res => {
-            setLesson(res.data)
-        })
-    }, [lesson])
+        instance.get<LessonType>('lessons/' + id + '/')
+            .then(res => {
+                setLesson(res.data)
+            })
+            .catch(() => {
+                setLesson({
+                    id: 0,
+                    lesson_conspect: '',
+                    lesson_description: '',
+                    lesson_homework: '',
+                    lesson_usefull_links: '',
+                    source_link: '',
+                    title: '',
+                })
+            })
+    }, [id])
+
+    const dispatch = useDispatch()
+    const click = (x: number) => dispatch(AppActions.setLesson((x).toString()))
+
+    useEffect(() => {
+        if (lessonData?.id === 0 && lessonData?.id !== +(lesson || 1)) click(id - 1)
+    }, [lessonData, lesson, id])
 
     const src = lessonData?.source_link.replace('watch?v=', 'embed/')
 
@@ -54,15 +77,21 @@ const LessonPage = () => {
 
                     <div className={s.xxx}>
                         <div className={s.title}>
-                            Что мы изучим:
+                            {lessonData?.id !== 0
+                                ? 'Что мы изучим:'
+                                : 'Этого урока пока нет'
+                            }
                         </div>
 
-                        <div className={s.description}>
-                            ???
-                            - Разберемся с тем, что вообще такое программирование и откуда взялось.
-                            - Научимся пользоваться инструментами, которые нужны для того, чтобы вы могли написать,
-                            запустить и увидеть результат выполнения вашей программы.
-                            - Научимся работать с базовыми элементами Python.
+                        <div
+                            className={s.description}
+                            dangerouslySetInnerHTML={{__html: lessonData?.lesson_conspect || ''}}
+                        >
+                            {/*???*/}
+                            {/*- Разберемся с тем, что вообще такое программирование и откуда взялось.*/}
+                            {/*- Научимся пользоваться инструментами, которые нужны для того, чтобы вы могли написать,*/}
+                            {/*запустить и увидеть результат выполнения вашей программы.*/}
+                            {/*- Научимся работать с базовыми элементами Python.*/}
                         </div>
                     </div>
                 </div>
@@ -78,8 +107,11 @@ const LessonPage = () => {
                         Домашнее задание:
                     </div>
 
-                    <div className={!col1 ? s.description : s.hidden}>
-                        ??? ссылка на дз или текст его описывающий
+                    <div
+                        className={!col1 ? s.description : s.hidden}
+                        dangerouslySetInnerHTML={{__html: lessonData?.lesson_homework || ''}}
+                    >
+                        {/*??? ссылка на дз или текст его описывающий*/}
                     </div>
                 </div>
 
@@ -103,8 +135,13 @@ const LessonPage = () => {
                 </div>
 
                 <div className={s.buttons}>
-                    <button className={s.button}>прошлый урок</button>
-                    <button className={s.button}>следующий урок</button>
+                    <NavLink to={PATH.LESSON + '/' + (+id - 1)} onClick={() => click(+id - 1)}>
+                        <button className={s.button} disabled={id === '1'}>прошлый урок</button>
+                    </NavLink>
+
+                    <NavLink to={PATH.LESSON + '/' + (+id + 1)} onClick={() => click(+id + 1)}>
+                        <button className={s.button} disabled={lessonData?.id === 0}>следующий урок</button>
+                    </NavLink>
                 </div>
             </div>
         </PageWithNavbar>

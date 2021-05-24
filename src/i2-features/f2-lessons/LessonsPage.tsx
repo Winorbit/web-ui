@@ -10,7 +10,8 @@ export type LessonType = {
     source_link: string
     lesson_description: string
     lesson_usefull_links: string
-
+    lesson_conspect: string
+    lesson_homework: string
 }
 
 const LessonsPage = () => {
